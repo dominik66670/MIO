@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textBoxA = new TextBox();
             textBoxB = new TextBox();
             textBoxPrecyzja = new TextBox();
@@ -37,6 +38,16 @@
             label3 = new Label();
             label4 = new Label();
             buttonGeneruj = new Button();
+            dataGridView1 = new DataGridView();
+            osobnikBindingSource = new BindingSource(components);
+            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            xIntDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            xBinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            xIntCalculatedDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            xRealCalculatedDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBoxA
@@ -117,11 +128,72 @@
             buttonGeneruj.UseVisualStyleBackColor = true;
             buttonGeneruj.Click += buttonGeneruj_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, xIntDataGridViewTextBoxColumn, xBinDataGridViewTextBoxColumn, xIntCalculatedDataGridViewTextBoxColumn, xRealCalculatedDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = osobnikBindingSource;
+            dataGridView1.Location = new Point(14, 119);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(774, 304);
+            dataGridView1.TabIndex = 9;
+            // 
+            // osobnikBindingSource
+            // 
+            osobnikBindingSource.DataSource = typeof(kod.Osobnik);
+            // 
+            // xRealDataGridViewTextBoxColumn
+            // 
+            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
+            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
+            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
+            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xIntDataGridViewTextBoxColumn
+            // 
+            xIntDataGridViewTextBoxColumn.DataPropertyName = "XInt";
+            xIntDataGridViewTextBoxColumn.HeaderText = "XInt";
+            xIntDataGridViewTextBoxColumn.Name = "xIntDataGridViewTextBoxColumn";
+            xIntDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xBinDataGridViewTextBoxColumn
+            // 
+            xBinDataGridViewTextBoxColumn.DataPropertyName = "XBin";
+            xBinDataGridViewTextBoxColumn.HeaderText = "XBin";
+            xBinDataGridViewTextBoxColumn.Name = "xBinDataGridViewTextBoxColumn";
+            xBinDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xIntCalculatedDataGridViewTextBoxColumn
+            // 
+            xIntCalculatedDataGridViewTextBoxColumn.DataPropertyName = "XIntCalculated";
+            xIntCalculatedDataGridViewTextBoxColumn.HeaderText = "XInt Calculated";
+            xIntCalculatedDataGridViewTextBoxColumn.Name = "xIntCalculatedDataGridViewTextBoxColumn";
+            xIntCalculatedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xRealCalculatedDataGridViewTextBoxColumn
+            // 
+            xRealCalculatedDataGridViewTextBoxColumn.DataPropertyName = "XRealCalculated";
+            xRealCalculatedDataGridViewTextBoxColumn.HeaderText = "XReal Calculated";
+            xRealCalculatedDataGridViewTextBoxColumn.Name = "xRealCalculatedDataGridViewTextBoxColumn";
+            xRealCalculatedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fxDataGridViewTextBoxColumn
+            // 
+            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
+            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(buttonGeneruj);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -133,6 +205,8 @@
             Controls.Add(textBoxA);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,5 +222,13 @@
         private Label label3;
         private Label label4;
         private Button buttonGeneruj;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn xIntDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn xBinDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn xIntCalculatedDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn xRealCalculatedDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
+        private BindingSource osobnikBindingSource;
     }
 }

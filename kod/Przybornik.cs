@@ -20,10 +20,10 @@ namespace kod
             }
             return osobniki;
         }
-        public static int? ObliczL(int a, int b,double d)
+        public static double ObliczL(int a, int b,double d)
         {
             double x = Math.Log2((b - a) * Math.Pow(10.0, d));
-            return (int)Math.Ceiling(x);
+            return Math.Ceiling(x);
         }
     }
 }

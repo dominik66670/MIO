@@ -4,11 +4,12 @@ namespace MIO
 {
     public partial class Form1 : Form
     {
-        List<Osobnik> _osobniki = new List<Osobnik>();
+        private List<Osobnik> _osobniki = new List<Osobnik>();
 
         public Form1()
         {
             InitializeComponent();
+            osobnikBindingSource.DataSource = _osobniki;
         }
 
         private void buttonGeneruj_Click(object sender, EventArgs e)
@@ -39,9 +40,16 @@ namespace MIO
                 // Losowanie liczb z zadanego zakresu ze wskazan¹ precyzj¹
                 //string wygenerowane = "";
                 //Przybornik.Generuj(a, b, precyzja, N).ForEach(x => { wygenerowane += " " + x.ToString(); });
-                // obliczanie zakresu
+                // obliczanie L
                 var L = Przybornik.ObliczL(a, b, precyzja);
-                MessageBox.Show(L.ToString());
+                _osobniki.Clear();
+                osobnikBindingSource.Clear();
+                Przybornik.Generuj(a, b, precyzja, N).ForEach(x =>
+                {
+                    _osobniki.Add(new Osobnik(x, L, a, b, precyzja));
+                });
+                osobnikBindingSource.ResetBindings(false);
+                
             }
             catch (Exception ex)
             {
