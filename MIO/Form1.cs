@@ -17,7 +17,8 @@ namespace MIO
             {
                 int a = Convert.ToInt32(textBoxA.Text);
                 int b = Convert.ToInt32(textBoxB.Text);
-                double N = Convert.ToInt32(textBoxN.Text);
+                int N = Convert.ToInt32(textBoxN.Text);
+                double D;
                 int precyzja = 0;
                 // sprawdzanie czy w precyzji jest liczba rzeczywista
                 if (!textBoxPrecyzja.Text.Contains(",") && !textBoxPrecyzja.Text.Contains(".")) { throw new NotANumberException(); }
@@ -25,18 +26,22 @@ namespace MIO
                 try
                 {
                     precyzja = textBoxPrecyzja.Text.Split(',')[1].Length;
+                    D = Convert.ToDouble(textBoxPrecyzja.Text);
                 }catch(Exception)
                 {
                     precyzja = textBoxPrecyzja.Text.Split('.')[1].Length;
+                    D = Convert.ToDouble(textBoxPrecyzja.Text.Replace('.',','));
                 }
                 // sprawdzanie poprwaniœci zakresu
                 if (a >= b) {throw new RangeError("Podano niew³aœciwy zakres");}
                 // sprawdzanie czy N jest ujemne
                 if (N <= 0) { throw new RangeError("Licznoœæ populacji (N) nie mo¿e byæ ujemne lub równe 0"); }
-                MessageBox.Show(precyzja.ToString());
-                // TO DO Pracowaæ na losowaniem liczb
-
-            }catch (Exception ex)
+                // Losowanie liczb z zadanego zakresu ze wskazan¹ precyzj¹
+                string wygenerowane = "";
+                Przybornik.Generuj(a, b, precyzja, N).ForEach(x => { wygenerowane += " " + x.ToString(); });
+                MessageBox.Show(wygenerowane);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "B³¹d");
             }
