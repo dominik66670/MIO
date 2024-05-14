@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MIO", "MIO\MIO.csproj", "{6603727B-7D94-404B-8FEE-A52274C2818F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kod", "kod\kod.csproj", "{30557E4D-1A92-40B7-A304-233E7C93D59B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kod", "kod\kod.csproj", "{30557E4D-1A92-40B7-A304-233E7C93D59B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
