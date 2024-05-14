@@ -18,20 +18,40 @@ namespace kod
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;
-            XInt = (1.0/(b-a)*(XReal-a) * (Math.Pow(2, l) - 1));
-            XInt = Math.Round(XInt);
-            //XBin = Convert.ToString(BitConverter.DoubleToInt64Bits(XInt), 2);
-            XBin = Convert.ToString((long)XInt, 2);
-            while (XBin.Length<l) 
+            XInt = xRealToXInt(a,b,l);
+            XBin = xIntToXBin(l);
+            XIntCalculated = xBinToXInt();
+            XRealCalculated = xIntToXReal(a,b,l,precision);
+            Fx = obliczFX();
+        }
+        private double obliczFX()
+        {
+            return mantysa(XReal) * ((Math.Cos(20 * Math.PI * XReal) - Math.Sin(XReal)));
+        }
+        // przekształca i zaaokrągla xint do xreal
+        private double xIntToXReal(int a, int b, double l, int precision)
+        {
+            return Math.Round((((b - a) * XIntCalculated) / (Math.Pow(2, l) - 1)) + a,precision);
+        }
+        // przekształca xbin do xint
+        private double xBinToXInt()
+        {
+            return Convert.ToInt32(XBin, 2);
+        }
+        // zwraca postać binarną z uzupełnieniem do l
+        private string xIntToXBin(double l)
+        {
+            string xbin = Convert.ToString((long)XInt, 2);
+            while (xbin.Length < l)
             {
-                XBin = "0" + XBin;
+                xbin = "0" + xbin;
             }
-            //XIntCalculated = BitConverter.Int64BitsToDouble(Convert.ToInt64(XBin, 2));
-            XIntCalculated = Convert.ToInt32(XBin, 2);
-            XIntCalculated = Math.Round(XIntCalculated);
-            XRealCalculated = (((b-a) * XIntCalculated) / (Math.Pow(2, l) - 1)) + a;
-            XRealCalculated = Math.Round(XRealCalculated,precision);
-            Fx = mantysa(XReal) * ((Math.Cos(20 * Math.PI * XReal) - Math.Sin(XReal)));
+            return xbin;
+        }
+        //Zwraca zaaokrąglone xint
+        private double xRealToXInt(int a, int b, double l)
+        {
+            return Math.Round(1.0 / (b - a) * (XReal - a) * (Math.Pow(2, l) - 1));
         }
         public override string ToString()
         {
