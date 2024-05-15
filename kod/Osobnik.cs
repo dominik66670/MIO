@@ -15,13 +15,18 @@ namespace kod
         public double XIntCalculated { get; set; }
         public double XRealCalculated { get; set; }
         public double Fx { get; set; }
+        public double Gx { get; set; }
+        public double P { get; set; }
+        public double Q { get; set; }
+        public double R { get; set; }
+        public double Xn { get; set; }
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;
             XInt = xRealToXInt(a,b,l);
             XBin = xIntToXBin(l);
-            XIntCalculated = xBinToXInt();
-            XRealCalculated = xIntToXReal(a,b,l,precision);
+            //XIntCalculated = xBinToXInt();
+            //XRealCalculated = xIntToXReal(a,b,l,precision);
             Fx = obliczFX();
         }
         private double obliczFX()
