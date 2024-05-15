@@ -9,6 +9,37 @@ namespace kod
 {
     public static class Przybornik
     {
+        // sprawdzić właściwe wybieranie
+        public static List<Osobnik> SelekcjaOsobnikow(List<Osobnik> osobnicy)
+        {
+            for (int i = 0; i < osobnicy.Count;i++)
+            {
+                for(int j = 1; j < osobnicy.Count; j++)
+                {
+                    if (osobnicy[i].R > osobnicy[j-1].Q&& osobnicy[i].R <= osobnicy[j].Q)
+                    {
+                        osobnicy[i].Xn = osobnicy[j].XReal;
+                        break;
+                    }
+                    else
+                    {
+                        osobnicy[i].Xn = osobnicy[osobnicy.Count - 1].XReal;
+                    }
+                }
+            }
+            return osobnicy;
+        }
+        public static List<Osobnik> LosowanieRDlaPopulacji(List<Osobnik> osobnicy)
+        {
+            Random rnd = new Random();
+            osobnicy.ForEach(osobnik => osobnik.R = _losowanieRDlaOsobnika(rnd));
+            return osobnicy;
+        }
+        private static double _losowanieRDlaOsobnika(Random random) 
+        {
+            return random.NextDouble();
+        }
+        // dustrybuanta dla populacji
         public static List<Osobnik> DystrybuantaPopulacji(List<Osobnik> osobniki)
         {
             osobniki[0].Q = osobniki[0].P;

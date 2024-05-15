@@ -39,9 +39,9 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
+            osobnikBindingSource = new BindingSource(components);
             xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            osobnikBindingSource = new BindingSource(components);
             Gx = new DataGridViewTextBoxColumn();
             P = new DataGridViewTextBoxColumn();
             Q = new DataGridViewTextBoxColumn();
@@ -143,6 +143,10 @@
             dataGridView1.Size = new Size(774, 304);
             dataGridView1.TabIndex = 9;
             // 
+            // osobnikBindingSource
+            // 
+            osobnikBindingSource.DataSource = typeof(kod.Osobnik);
+            // 
             // xRealDataGridViewTextBoxColumn
             // 
             xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
@@ -156,10 +160,6 @@
             fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
             fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
             fxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // osobnikBindingSource
-            // 
-            osobnikBindingSource.DataSource = typeof(kod.Osobnik);
             // 
             // Gx
             // 

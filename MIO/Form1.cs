@@ -52,6 +52,10 @@ namespace MIO
                 _osobniki = Przybornik.ObliczPiPopulacji(_osobniki);
                 // wyliczanie Q dla populacji
                 _osobniki = Przybornik.DystrybuantaPopulacji(_osobniki);
+                // losowanie R dla populacji
+                _osobniki = Przybornik.LosowanieRDlaPopulacji(_osobniki);
+                // to do poprawy
+                _osobniki = Przybornik.SelekcjaOsobnikow(_osobniki);
                 osobnikBindingSource.ResetBindings(false);
 
             }

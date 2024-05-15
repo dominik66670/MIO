@@ -19,7 +19,7 @@ namespace kod
         public double P { get; set; }
         public double Q { get; set; }
         public double R { get; set; }
-        public Osobnik Xn { get; set; }
+        public double Xn { get; set; }
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;
