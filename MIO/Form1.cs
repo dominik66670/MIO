@@ -37,13 +37,11 @@ namespace MIO
                 if (a >= b) {throw new RangeError("Podano niew³aœciwy zakres");}
                 // sprawdzanie czy N jest ujemne
                 if (N <= 0) { throw new RangeError("Licznoœæ populacji (N) nie mo¿e byæ ujemne lub równe 0"); }
-                // Losowanie liczb z zadanego zakresu ze wskazan¹ precyzj¹
-                //string wygenerowane = "";
-                //Przybornik.Generuj(a, b, precyzja, N).ForEach(x => { wygenerowane += " " + x.ToString(); });
                 // obliczanie L
                 var L = Przybornik.ObliczL(a, b, precyzja);
                 _osobniki.Clear();
                 osobnikBindingSource.Clear();
+                // Losowanie liczb z zadanego zakresu ze wskazan¹ precyzj¹
                 Przybornik.Generuj(a, b, precyzja, N).ForEach(x =>
                 {
                     _osobniki.Add(new Osobnik(x, L, a, b, precyzja));
