@@ -9,6 +9,15 @@ namespace kod
 {
     public static class Przybornik
     {
+        public static List<Osobnik> DystrybuantaPopulacji(List<Osobnik> osobniki)
+        {
+            osobniki[0].Q = osobniki[0].P;
+            for (int i = 1; i < osobniki.Count; i++)
+            {
+                osobniki[i].Q= osobniki[i].P+osobniki[i-1].Q;
+            }
+            return osobniki;
+        }
         // obliczanie Pi dla populacji
         public static List<Osobnik> ObliczPiPopulacji(List<Osobnik> osobniki)
         {

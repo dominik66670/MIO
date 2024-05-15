@@ -48,7 +48,10 @@ namespace MIO
                 });
                 // wyliczenie gx dla ca³ej populacji
                 _osobniki = Przybornik.ObliczGxPopulacji(_osobniki, D);
+                // wyliczanie Pi dla populacji
                 _osobniki = Przybornik.ObliczPiPopulacji(_osobniki);
+                // wyliczanie Q dla populacji
+                _osobniki = Przybornik.DystrybuantaPopulacji(_osobniki);
                 osobnikBindingSource.ResetBindings(false);
 
             }
