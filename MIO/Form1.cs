@@ -46,16 +46,8 @@ namespace MIO
                 {
                     _osobniki.Add(new Osobnik(x, L, a, b, precyzja));
                 });
-                // wyliczenie gx dla ca³ej populacji
-                _osobniki = Przybornik.ObliczGxPopulacji(_osobniki, D);
-                // wyliczanie Pi dla populacji
-                _osobniki = Przybornik.ObliczPiPopulacji(_osobniki);
-                // wyliczanie Q dla populacji
-                _osobniki = Przybornik.DystrybuantaPopulacji(_osobniki);
-                // losowanie R dla populacji
-                _osobniki = Przybornik.LosowanieRDlaPopulacji(_osobniki);
-                // to do poprawy
-                _osobniki = Przybornik.SelekcjaOsobnikow(_osobniki);
+                // selekcja populacji
+                _osobniki = Przybornik.KrecimyRuletka(_osobniki,D);
                 osobnikBindingSource.ResetBindings(false);
 
             }

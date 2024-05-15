@@ -9,14 +9,29 @@ namespace kod
 {
     public static class Przybornik
     {
-        // sprawdzić właściwe wybieranie
+        // Metoda agregująca elementy selekcji osobników
+        public static List<Osobnik> KrecimyRuletka(List<Osobnik> _osobniki,double D)
+        {
+            // wyliczenie gx dla całej populacji
+            _osobniki = ObliczGxPopulacji(_osobniki, D);
+            // wyliczanie Pi dla populacji
+            _osobniki = ObliczPiPopulacji(_osobniki);
+            // wyliczanie Q dla populacji
+            _osobniki = DystrybuantaPopulacji(_osobniki);
+            // losowanie R dla populacji
+            _osobniki = LosowanieRDlaPopulacji(_osobniki);
+            // Selekcja osobników
+            _osobniki = SelekcjaOsobnikow(_osobniki);
+            return _osobniki;
+        }
+        // Selekcja populacji
         public static List<Osobnik> SelekcjaOsobnikow(List<Osobnik> osobnicy)
         {
             for (int i = 0; i < osobnicy.Count;i++)
             {
-                for(int j = 1; j < osobnicy.Count; j++)
+                for(int j = 0; j < osobnicy.Count; j++)
                 {
-                    if (osobnicy[i].R > osobnicy[j-1].Q&& osobnicy[i].R <= osobnicy[j].Q)
+                    if (osobnicy[i].R <= osobnicy[j].Q)
                     {
                         osobnicy[i].Xn = osobnicy[j].XReal;
                         break;
