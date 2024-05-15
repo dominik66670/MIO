@@ -46,8 +46,11 @@ namespace MIO
                 {
                     _osobniki.Add(new Osobnik(x, L, a, b, precyzja));
                 });
+                // wyliczenie gx dla ca³ej populacji
+                _osobniki = Przybornik.ObliczGxPopulacji(_osobniki, D);
+                _osobniki = Przybornik.ObliczPiPopulacji(_osobniki);
                 osobnikBindingSource.ResetBindings(false);
-                
+
             }
             catch (Exception ex)
             {
