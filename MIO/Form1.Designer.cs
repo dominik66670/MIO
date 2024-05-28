@@ -39,18 +39,19 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
-            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Gx = new DataGridViewTextBoxColumn();
-            P = new DataGridViewTextBoxColumn();
-            Q = new DataGridViewTextBoxColumn();
-            R = new DataGridViewTextBoxColumn();
-            Xn = new DataGridViewTextBoxColumn();
             osobnikBindingSource = new BindingSource(components);
             label5 = new Label();
             label6 = new Label();
             texBoxPk = new TextBox();
             textBoxPm = new TextBox();
+            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Xn = new DataGridViewTextBoxColumn();
+            XnBin = new DataGridViewTextBoxColumn();
+            CzyRodzic = new DataGridViewTextBoxColumn();
+            Pc = new DataGridViewTextBoxColumn();
+            Dziecko = new DataGridViewTextBoxColumn();
+            PopulacjaPoKrzyzowaniu = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -139,62 +140,13 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Gx, P, Q, R, Xn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(14, 119);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(774, 304);
+            dataGridView1.Size = new Size(1019, 304);
             dataGridView1.TabIndex = 9;
-            // 
-            // xRealDataGridViewTextBoxColumn
-            // 
-            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
-            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
-            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
-            xRealDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fxDataGridViewTextBoxColumn
-            // 
-            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
-            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
-            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
-            fxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Gx
-            // 
-            Gx.DataPropertyName = "Gx";
-            Gx.HeaderText = "g(x)";
-            Gx.Name = "Gx";
-            Gx.ReadOnly = true;
-            // 
-            // P
-            // 
-            P.DataPropertyName = "P";
-            P.HeaderText = "Pi";
-            P.Name = "P";
-            P.ReadOnly = true;
-            // 
-            // Q
-            // 
-            Q.DataPropertyName = "Q";
-            Q.HeaderText = "Qi";
-            Q.Name = "Q";
-            Q.ReadOnly = true;
-            // 
-            // R
-            // 
-            R.DataPropertyName = "R";
-            R.HeaderText = "R";
-            R.Name = "R";
-            R.ReadOnly = true;
-            // 
-            // Xn
-            // 
-            Xn.DataPropertyName = "Xn";
-            Xn.HeaderText = "Xn";
-            Xn.Name = "Xn";
-            Xn.ReadOnly = true;
             // 
             // osobnikBindingSource
             // 
@@ -234,11 +186,67 @@
             textBoxPm.TabIndex = 13;
             textBoxPm.Text = "0.0001";
             // 
+            // xRealDataGridViewTextBoxColumn
+            // 
+            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
+            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
+            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
+            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fxDataGridViewTextBoxColumn
+            // 
+            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
+            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Xn
+            // 
+            Xn.DataPropertyName = "Xn";
+            Xn.HeaderText = "Xn";
+            Xn.Name = "Xn";
+            Xn.ReadOnly = true;
+            // 
+            // XnBin
+            // 
+            XnBin.DataPropertyName = "XnBin";
+            XnBin.HeaderText = "XnBin";
+            XnBin.Name = "XnBin";
+            XnBin.ReadOnly = true;
+            // 
+            // CzyRodzic
+            // 
+            CzyRodzic.DataPropertyName = "CzyRodzic";
+            CzyRodzic.HeaderText = "Populacja Rodzicow";
+            CzyRodzic.Name = "CzyRodzic";
+            CzyRodzic.ReadOnly = true;
+            // 
+            // Pc
+            // 
+            Pc.DataPropertyName = "Pc";
+            Pc.HeaderText = "Pc";
+            Pc.Name = "Pc";
+            Pc.ReadOnly = true;
+            // 
+            // Dziecko
+            // 
+            Dziecko.DataPropertyName = "Dziecko";
+            Dziecko.HeaderText = "Populacja Dziecka";
+            Dziecko.Name = "Dziecko";
+            Dziecko.ReadOnly = true;
+            // 
+            // PopulacjaPoKrzyzowaniu
+            // 
+            PopulacjaPoKrzyzowaniu.DataPropertyName = "PopulacjaPoKrzyzowaniu";
+            PopulacjaPoKrzyzowaniu.HeaderText = "Populacja Po Krzyzowaniu";
+            PopulacjaPoKrzyzowaniu.Name = "PopulacjaPoKrzyzowaniu";
+            PopulacjaPoKrzyzowaniu.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1074, 450);
             Controls.Add(textBoxPm);
             Controls.Add(texBoxPk);
             Controls.Add(label6);
@@ -274,16 +282,17 @@
         private Button buttonGeneruj;
         private DataGridView dataGridView1;
         private BindingSource osobnikBindingSource;
-        private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Gx;
-        private DataGridViewTextBoxColumn P;
-        private DataGridViewTextBoxColumn Q;
-        private DataGridViewTextBoxColumn R;
-        private DataGridViewTextBoxColumn Xn;
         private Label label5;
         private Label label6;
         private TextBox texBoxPk;
         private TextBox textBoxPm;
+        private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Xn;
+        private DataGridViewTextBoxColumn XnBin;
+        private DataGridViewTextBoxColumn CzyRodzic;
+        private DataGridViewTextBoxColumn Pc;
+        private DataGridViewTextBoxColumn Dziecko;
+        private DataGridViewTextBoxColumn PopulacjaPoKrzyzowaniu;
     }
 }

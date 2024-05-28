@@ -63,6 +63,9 @@ namespace MIO
                 });
                 // selekcja populacji
                 _osobniki = Przybornik.KrecimyRuletka(_osobniki,D);
+                _osobniki = Przybornik.XnToXnBin(_osobniki,a,b,L);
+                _osobniki = Przybornik.DecyzjaODziecku(_osobniki, Pk);
+                _osobniki = Przybornik.RobienieDzieci(_osobniki);
                 osobnikBindingSource.ResetBindings(false);
                 
 

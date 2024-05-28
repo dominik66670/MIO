@@ -9,6 +9,60 @@ namespace kod
 {
     public static class Przybornik
     {
+        public static List<Osobnik> RobienieDzieci(List<Osobnik> osobniki)
+        {
+            int ileRodzicow = osobniki.FindAll(o => o.CzyRodzic != "-").Count;
+            if (ileRodzicow % 2 == 0)
+            {
+                foreach (var osobnik in osobniki)
+                {
+                    if (osobnik.CzyRodzic == "-")
+                    {
+                        osobnik.PopulacjaPoKrzyzowaniu = osobnik.XnBin;
+                        osobnik.Dziecko = "-";
+                    }
+
+                }
+            }
+            
+            return osobniki;
+        }
+        // wybiera które osobniki zostaną rodzicami
+        public static List<Osobnik> DecyzjaODziecku(List<Osobnik> osobniki,double Pk)
+        {
+            Random rnd = new Random();
+            foreach (var osobnik in osobniki)
+            {
+                if (rnd.NextDouble()<Pk)
+                {
+                    osobnik.CzyRodzic = osobnik.XnBin;
+                }
+                else
+                {
+                    osobnik.CzyRodzic = "-";
+                }
+            }
+            return osobniki;
+        }
+        // Przlicza Xn to XnBin dla całej populacji
+        public static List<Osobnik> XnToXnBin(List<Osobnik> osobniki, int a, int b, double l)
+        {
+            osobniki.ForEach(o => o.XnBin = Przybornik.przeliczNaBin(Przybornik.przeliczNaXInt(o.Xn,a,b,l), l));
+            return osobniki;
+        }
+        private static double przeliczNaXInt(double XReal, int a, int b, double l)
+        {
+            return Math.Round(1.0 / (b - a) * (XReal - a) * (Math.Pow(2, l) - 1));
+        }
+        private static string przeliczNaBin(double XInt, double l)
+        {
+            string xbin = Convert.ToString((long)XInt, 2);
+            while (xbin.Length < l)
+            {
+                xbin = "0" + xbin;
+            }
+            return xbin;
+        } 
         // Metoda agregująca elementy selekcji osobników
         public static List<Osobnik> KrecimyRuletka(List<Osobnik> _osobniki,double D)
         {
