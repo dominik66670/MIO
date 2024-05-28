@@ -39,7 +39,6 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
-            osobnikBindingSource = new BindingSource(components);
             xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             Gx = new DataGridViewTextBoxColumn();
@@ -47,6 +46,11 @@
             Q = new DataGridViewTextBoxColumn();
             R = new DataGridViewTextBoxColumn();
             Xn = new DataGridViewTextBoxColumn();
+            osobnikBindingSource = new BindingSource(components);
+            label5 = new Label();
+            label6 = new Label();
+            texBoxPk = new TextBox();
+            textBoxPm = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -143,10 +147,6 @@
             dataGridView1.Size = new Size(774, 304);
             dataGridView1.TabIndex = 9;
             // 
-            // osobnikBindingSource
-            // 
-            osobnikBindingSource.DataSource = typeof(kod.Osobnik);
-            // 
             // xRealDataGridViewTextBoxColumn
             // 
             xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
@@ -196,11 +196,53 @@
             Xn.Name = "Xn";
             Xn.ReadOnly = true;
             // 
+            // osobnikBindingSource
+            // 
+            osobnikBindingSource.DataSource = typeof(kod.Osobnik);
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(343, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(34, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Pk = ";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(426, 41);
+            label6.Name = "label6";
+            label6.Size = new Size(36, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Pm =";
+            // 
+            // texBoxPk
+            // 
+            texBoxPk.Location = new Point(383, 34);
+            texBoxPk.Name = "texBoxPk";
+            texBoxPk.Size = new Size(37, 23);
+            texBoxPk.TabIndex = 12;
+            texBoxPk.Text = "0.5";
+            // 
+            // textBoxPm
+            // 
+            textBoxPm.Location = new Point(468, 38);
+            textBoxPm.Name = "textBoxPm";
+            textBoxPm.Size = new Size(47, 23);
+            textBoxPm.TabIndex = 13;
+            textBoxPm.Text = "0.0001";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBoxPm);
+            Controls.Add(texBoxPk);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(buttonGeneruj);
             Controls.Add(label4);
@@ -239,5 +281,9 @@
         private DataGridViewTextBoxColumn Q;
         private DataGridViewTextBoxColumn R;
         private DataGridViewTextBoxColumn Xn;
+        private Label label5;
+        private Label label6;
+        private TextBox texBoxPk;
+        private TextBox textBoxPm;
     }
 }
