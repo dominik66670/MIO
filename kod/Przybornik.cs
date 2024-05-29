@@ -9,23 +9,55 @@ namespace kod
 {
     public static class Przybornik
     {
-        public static List<Osobnik> RobienieDzieci(List<Osobnik> osobniki)
+        public static List<Osobnik> RobienieDzieci(List<Osobnik> osobniki, double L)
         {
+            // pobranie ilości osobników chętnych do rozmnażania
             int ileRodzicow = osobniki.FindAll(o => o.CzyRodzic != "-").Count;
-            if (ileRodzicow % 2 == 0)
+            // przeniesienie osobników nie rozmnażających się do następnego kroku
+            foreach (var osobnik in osobniki)
             {
-                foreach (var osobnik in osobniki)
+                if (osobnik.CzyRodzic == "-")
                 {
-                    if (osobnik.CzyRodzic == "-")
-                    {
-                        osobnik.PopulacjaPoKrzyzowaniu = osobnik.XnBin;
-                        osobnik.Dziecko = "-";
-                    }
-
+                    osobnik.PopulacjaPoKrzyzowaniu = osobnik.XnBin;
+                    osobnik.Dziecko = "-";
                 }
+
             }
-            
+            // Wyrównanie populacji jeśli nie parzysta
+            if (ileRodzicow % 2 == 1)
+            {
+                var samotnik = osobniki.Where(o => o.CzyRodzic != "-").Last();
+                samotnik.Dziecko = "-";
+                samotnik.PopulacjaPoKrzyzowaniu=samotnik.XnBin;
+                ileRodzicow--;
+            }
+            Random random = new Random();
+            // osobni są brane parami i mają wspólny punkt przecięcia
+            while (ileRodzicow>0)
+            {
+                int punktP = random.Next(1,(int)L);
+                Osobnik rodzicA = osobniki.FindAll(o => o.CzyRodzic != "-" && o.Dziecko=="").First();
+                Osobnik rodzicB = osobniki.FindAll(o => o.CzyRodzic != "-" && o.Dziecko == "").Skip(1).First();
+                rodzicA.Pc = punktP;
+                rodzicB.Pc = punktP;
+                List<string> dzieci = krzyzowania(rodzicA, rodzicB);
+                rodzicA.Dziecko = dzieci.First();
+                rodzicA.PopulacjaPoKrzyzowaniu = dzieci.First();
+                rodzicB.Dziecko = dzieci.Last();
+                rodzicB.PopulacjaPoKrzyzowaniu = dzieci.Last();
+                ileRodzicow -=2;
+            }
+
+
             return osobniki;
+        }
+        // robienie dzieci z osobników
+        private static List<string> krzyzowania(Osobnik rodzicA,Osobnik rodzicB)
+        {
+            List<string> dzieci = new List<string>();
+            dzieci.Add(rodzicA.CzyRodzic.Substring(0,rodzicA.Pc)+ rodzicB.CzyRodzic.Substring(rodzicA.Pc));
+            dzieci.Add(rodzicB.CzyRodzic.Substring(0, rodzicA.Pc) + rodzicA.CzyRodzic.Substring(rodzicA.Pc));
+            return dzieci;
         }
         // wybiera które osobniki zostaną rodzicami
         public static List<Osobnik> DecyzjaODziecku(List<Osobnik> osobniki,double Pk)
