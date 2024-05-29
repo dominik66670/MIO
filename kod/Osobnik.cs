@@ -25,6 +25,8 @@ namespace kod
         public int Pc { get; set; }
         public string Dziecko { get; set; }
         public string PopulacjaPoKrzyzowaniu { get; set; }
+        public string MutowaneElementy { get; set; }
+        public string OsobnikPoMutacji { get; set; }
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;

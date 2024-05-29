@@ -9,8 +9,47 @@ namespace kod
 {
     public static class Przybornik
     {
+        public static List<Osobnik> Mutacje(List<Osobnik> osobniki, double Pm)
+        {
+            Random rng = new Random();
+            foreach (Osobnik osobnik in osobniki)
+            {
+                osobnik.MutowaneElementy = "";
+                for (int i = 0; i < osobnik.PopulacjaPoKrzyzowaniu.Length; i++)
+                {
+                    // sprawdzanie czy mutacja zaistniała
+                    if (rng.NextDouble()<Pm)
+                    {
+                        //sprawdzanie w jaki sposób zmienić element
+                        if (osobnik.PopulacjaPoKrzyzowaniu[i] =='1')
+                        {
+                            var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
+                            orginalnyGenom[i] = '0';
+                            osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
+                            osobnik.MutowaneElementy += ""+i+",";
+
+                        }
+                        else
+                        {
+                            var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
+                            orginalnyGenom[i] = '1';
+                            osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
+                            osobnik.MutowaneElementy += "" + i + ",";
+                        }
+                    }
+                }
+                // przy braku mutacji daje informację zwrotną
+                if (osobnik.MutowaneElementy=="")
+                {
+                    osobnik.MutowaneElementy = "Nie mutował";
+                    osobnik.OsobnikPoMutacji = osobnik.PopulacjaPoKrzyzowaniu;
+                }
+            }
+            return osobniki;
+        }
         public static List<Osobnik> RobienieDzieci(List<Osobnik> osobniki, double L)
         {
+            // L to długość genomu
             // pobranie ilości osobników chętnych do rozmnażania
             int ileRodzicow = osobniki.FindAll(o => o.CzyRodzic != "-").Count;
             // przeniesienie osobników nie rozmnażających się do następnego kroku

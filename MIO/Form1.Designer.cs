@@ -52,6 +52,8 @@
             Pc = new DataGridViewTextBoxColumn();
             Dziecko = new DataGridViewTextBoxColumn();
             PopulacjaPoKrzyzowaniu = new DataGridViewTextBoxColumn();
+            MutowaneElementy = new DataGridViewTextBoxColumn();
+            OsobnikPoMutacji = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -140,12 +142,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu, MutowaneElementy, OsobnikPoMutacji });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(14, 119);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(1019, 304);
+            dataGridView1.Size = new Size(1441, 304);
             dataGridView1.TabIndex = 9;
             // 
             // osobnikBindingSource
@@ -242,11 +244,25 @@
             PopulacjaPoKrzyzowaniu.Name = "PopulacjaPoKrzyzowaniu";
             PopulacjaPoKrzyzowaniu.ReadOnly = true;
             // 
+            // MutowaneElementy
+            // 
+            MutowaneElementy.DataPropertyName = "MutowaneElementy";
+            MutowaneElementy.HeaderText = "Mutowane Elementy";
+            MutowaneElementy.Name = "MutowaneElementy";
+            MutowaneElementy.ReadOnly = true;
+            // 
+            // OsobnikPoMutacji
+            // 
+            OsobnikPoMutacji.DataPropertyName = "OsobnikPoMutacji";
+            OsobnikPoMutacji.HeaderText = "Osobnik Po Mutacji";
+            OsobnikPoMutacji.Name = "OsobnikPoMutacji";
+            OsobnikPoMutacji.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1074, 450);
+            ClientSize = new Size(1518, 450);
             Controls.Add(textBoxPm);
             Controls.Add(texBoxPk);
             Controls.Add(label6);
@@ -294,5 +310,7 @@
         private DataGridViewTextBoxColumn Pc;
         private DataGridViewTextBoxColumn Dziecko;
         private DataGridViewTextBoxColumn PopulacjaPoKrzyzowaniu;
+        private DataGridViewTextBoxColumn MutowaneElementy;
+        private DataGridViewTextBoxColumn OsobnikPoMutacji;
     }
 }
