@@ -15,15 +15,17 @@ namespace kod
             foreach (Osobnik osobnik in osobniki)
             {
                 osobnik.MutowaneElementy = "";
+                // pierwsze porównanie jest z orginalnym genomem
+                var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
                 for (int i = 0; i < osobnik.PopulacjaPoKrzyzowaniu.Length; i++)
                 {
                     // sprawdzanie czy mutacja zaistniała
                     if (rng.NextDouble()<Pm)
                     {
-                        //sprawdzanie w jaki sposób zmienić element
-                        if (osobnik.PopulacjaPoKrzyzowaniu[i] =='1')
+
+                        //sprawdzanie w jaki sposób zmienić element pierwsze porównanie jest z orginalnym genomem
+                        if (orginalnyGenom[i] =='1')
                         {
-                            var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
                             orginalnyGenom[i] = '0';
                             osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
                             osobnik.MutowaneElementy += ""+i+",";
@@ -31,11 +33,12 @@ namespace kod
                         }
                         else
                         {
-                            var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
                             orginalnyGenom[i] = '1';
                             osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
                             osobnik.MutowaneElementy += "" + i + ",";
                         }
+                        // kolejne już ze zmutowanym
+                        orginalnyGenom = osobnik.OsobnikPoMutacji.ToCharArray();
                     }
                 }
                 // przy braku mutacji daje informację zwrotną
