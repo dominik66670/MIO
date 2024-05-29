@@ -9,6 +9,15 @@ namespace kod
 {
     public static class Przybornik
     {
+        public static List<Osobnik> KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(List<Osobnik> osobniki, int a, int b, double l, int precision)
+        {
+            // konwersja do xReal
+            osobniki.ForEach(o => o.XRealKoncowy = Przybornik.xIntToXReal(Przybornik.xBinToXInt(o.OsobnikPoMutacji),a, b, l, precision));
+            //Funkcja Oceny
+            osobniki.ForEach(o => o.FxKoncowy = Przybornik.obliczFX(o.XRealKoncowy));
+
+            return osobniki;
+        }
         public static List<Osobnik> Mutacje(List<Osobnik> osobniki, double Pm)
         {
             Random rng = new Random();
@@ -231,6 +240,22 @@ namespace kod
         private static double _obliczGxOsobnika(Osobnik osobnik,double fxmax,double D)
         {
             return osobnik.Fx - fxmax + D;
+        }
+        private static double mantysa(double x)
+        {
+            return x - Math.Floor(x);
+        }
+        private static int xBinToXInt(string XBin)
+        {
+            return Convert.ToInt32(XBin, 2);
+        }
+        private static double xIntToXReal(int XInt,int a, int b, double l, int precision)
+        {
+            return Math.Round((((b - a) * XInt) / (Math.Pow(2, l) - 1)) + a, precision);
+        }
+        private static double obliczFX(double XReal)
+        {
+            return mantysa(XReal) * ((Math.Cos(20 * Math.PI * XReal) - Math.Sin(XReal)));
         }
     }
 }

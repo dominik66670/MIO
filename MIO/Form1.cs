@@ -67,6 +67,7 @@ namespace MIO
                 _osobniki = Przybornik.DecyzjaODziecku(_osobniki, Pk);
                 _osobniki = Przybornik.RobienieDzieci(_osobniki,L);
                 _osobniki = Przybornik.Mutacje(_osobniki, Pm);
+                _osobniki = Przybornik.KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(_osobniki, a, b, L, precyzja);
                 osobnikBindingSource.ResetBindings(false);
                 
 

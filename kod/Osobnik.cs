@@ -27,6 +27,8 @@ namespace kod
         public string PopulacjaPoKrzyzowaniu { get; set; }
         public string MutowaneElementy { get; set; }
         public string OsobnikPoMutacji { get; set; }
+        public double XRealKoncowy { get; set; }
+        public double FxKoncowy { get; set; }
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;

@@ -54,6 +54,8 @@
             PopulacjaPoKrzyzowaniu = new DataGridViewTextBoxColumn();
             MutowaneElementy = new DataGridViewTextBoxColumn();
             OsobnikPoMutacji = new DataGridViewTextBoxColumn();
+            XRealKoncowy = new DataGridViewTextBoxColumn();
+            FxKoncowy = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -142,7 +144,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu, MutowaneElementy, OsobnikPoMutacji });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu, MutowaneElementy, OsobnikPoMutacji, XRealKoncowy, FxKoncowy });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(14, 119);
             dataGridView1.Name = "dataGridView1";
@@ -258,6 +260,20 @@
             OsobnikPoMutacji.Name = "OsobnikPoMutacji";
             OsobnikPoMutacji.ReadOnly = true;
             // 
+            // XRealKoncowy
+            // 
+            XRealKoncowy.DataPropertyName = "XRealKoncowy";
+            XRealKoncowy.HeaderText = "XReal";
+            XRealKoncowy.Name = "XRealKoncowy";
+            XRealKoncowy.ReadOnly = true;
+            // 
+            // FxKoncowy
+            // 
+            FxKoncowy.DataPropertyName = "FxKoncowy";
+            FxKoncowy.HeaderText = "F(x)";
+            FxKoncowy.Name = "FxKoncowy";
+            FxKoncowy.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -312,5 +328,7 @@
         private DataGridViewTextBoxColumn PopulacjaPoKrzyzowaniu;
         private DataGridViewTextBoxColumn MutowaneElementy;
         private DataGridViewTextBoxColumn OsobnikPoMutacji;
+        private DataGridViewTextBoxColumn XRealKoncowy;
+        private DataGridViewTextBoxColumn FxKoncowy;
     }
 }
