@@ -20,6 +20,8 @@ namespace MIO
                 int b = Convert.ToInt32(textBoxB.Text);
                 int N = Convert.ToInt32(textBoxN.Text);
                 double D;
+                double Pk;
+                double Pm;
                 int precyzja = 0;
                 // sprawdzanie czy w precyzji jest liczba rzeczywista
                 if (!textBoxPrecyzja.Text.Contains(",") && !textBoxPrecyzja.Text.Contains(".")) { throw new NotANumberException(); }
@@ -28,10 +30,23 @@ namespace MIO
                 {
                     precyzja = textBoxPrecyzja.Text.Split(',')[1].Length;
                     D = Convert.ToDouble(textBoxPrecyzja.Text);
-                }catch(Exception)
+                    
+                }
+                catch(Exception)
                 {
                     precyzja = textBoxPrecyzja.Text.Split('.')[1].Length;
                     D = Convert.ToDouble(textBoxPrecyzja.Text.Replace('.',','));
+                    
+                }
+                try
+                {
+                    Pk = Convert.ToDouble(texBoxPk.Text);
+                    Pm = Convert.ToDouble(textBoxPm.Text);
+                }
+                catch (Exception)
+                {
+                    Pk = Convert.ToDouble(texBoxPk.Text.Replace('.', ','));
+                    Pm = Convert.ToDouble(textBoxPm.Text.Replace('.', ','));
                 }
                 // sprawdzanie poprwaniœci zakresu
                 if (a >= b) {throw new RangeError("Podano niew³aœciwy zakres");}
@@ -48,7 +63,13 @@ namespace MIO
                 });
                 // selekcja populacji
                 _osobniki = Przybornik.KrecimyRuletka(_osobniki,D);
+                _osobniki = Przybornik.XnToXnBin(_osobniki,a,b,L);
+                _osobniki = Przybornik.DecyzjaODziecku(_osobniki, Pk);
+                _osobniki = Przybornik.RobienieDzieci(_osobniki,L);
+                _osobniki = Przybornik.Mutacje(_osobniki, Pm);
+                _osobniki = Przybornik.KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(_osobniki, a, b, L, precyzja);
                 osobnikBindingSource.ResetBindings(false);
+                
 
             }
             catch (Exception ex)

@@ -20,6 +20,15 @@ namespace kod
         public double Q { get; set; }
         public double R { get; set; }
         public double Xn { get; set; }
+        public string XnBin { get; set; }
+        public string CzyRodzic { get; set; }
+        public int Pc { get; set; }
+        public string Dziecko { get; set; }
+        public string PopulacjaPoKrzyzowaniu { get; set; }
+        public string MutowaneElementy { get; set; }
+        public string OsobnikPoMutacji { get; set; }
+        public double XRealKoncowy { get; set; }
+        public double FxKoncowy { get; set; }
         public Osobnik(double xReal, double l, int a,int b, int precision)
         {
             XReal = xReal;
@@ -28,6 +37,7 @@ namespace kod
             //XIntCalculated = xBinToXInt();
             //XRealCalculated = xIntToXReal(a,b,l,precision);
             Fx = obliczFX();
+            Dziecko = "";
         }
         private double obliczFX()
         {

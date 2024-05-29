@@ -9,6 +9,143 @@ namespace kod
 {
     public static class Przybornik
     {
+        public static List<Osobnik> KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(List<Osobnik> osobniki, int a, int b, double l, int precision)
+        {
+            // konwersja do xReal
+            osobniki.ForEach(o => o.XRealKoncowy = Przybornik.xIntToXReal(Przybornik.xBinToXInt(o.OsobnikPoMutacji),a, b, l, precision));
+            //Funkcja Oceny
+            osobniki.ForEach(o => o.FxKoncowy = Przybornik.obliczFX(o.XRealKoncowy));
+
+            return osobniki;
+        }
+        public static List<Osobnik> Mutacje(List<Osobnik> osobniki, double Pm)
+        {
+            Random rng = new Random();
+            foreach (Osobnik osobnik in osobniki)
+            {
+                osobnik.MutowaneElementy = "";
+                // pierwsze porównanie jest z orginalnym genomem
+                var orginalnyGenom = osobnik.PopulacjaPoKrzyzowaniu.ToCharArray();
+                for (int i = 0; i < osobnik.PopulacjaPoKrzyzowaniu.Length; i++)
+                {
+                    // sprawdzanie czy mutacja zaistniała
+                    if (rng.NextDouble()<Pm)
+                    {
+
+                        //sprawdzanie w jaki sposób zmienić element pierwsze porównanie jest z orginalnym genomem
+                        if (orginalnyGenom[i] =='1')
+                        {
+                            orginalnyGenom[i] = '0';
+                            osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
+                            osobnik.MutowaneElementy += ""+i+",";
+
+                        }
+                        else
+                        {
+                            orginalnyGenom[i] = '1';
+                            osobnik.OsobnikPoMutacji = new string(orginalnyGenom);
+                            osobnik.MutowaneElementy += "" + i + ",";
+                        }
+                        // kolejne już ze zmutowanym
+                        orginalnyGenom = osobnik.OsobnikPoMutacji.ToCharArray();
+                    }
+                }
+                // przy braku mutacji daje informację zwrotną
+                if (osobnik.MutowaneElementy=="")
+                {
+                    osobnik.MutowaneElementy = "Nie mutował";
+                    osobnik.OsobnikPoMutacji = osobnik.PopulacjaPoKrzyzowaniu;
+                }
+            }
+            return osobniki;
+        }
+        public static List<Osobnik> RobienieDzieci(List<Osobnik> osobniki, double L)
+        {
+            // L to długość genomu
+            // pobranie ilości osobników chętnych do rozmnażania
+            int ileRodzicow = osobniki.FindAll(o => o.CzyRodzic != "-").Count;
+            // przeniesienie osobników nie rozmnażających się do następnego kroku
+            foreach (var osobnik in osobniki)
+            {
+                if (osobnik.CzyRodzic == "-")
+                {
+                    osobnik.PopulacjaPoKrzyzowaniu = osobnik.XnBin;
+                    osobnik.Dziecko = "-";
+                }
+
+            }
+            // Wyrównanie populacji jeśli nie parzysta
+            if (ileRodzicow % 2 == 1)
+            {
+                var samotnik = osobniki.Where(o => o.CzyRodzic != "-").Last();
+                samotnik.Dziecko = "-";
+                samotnik.PopulacjaPoKrzyzowaniu=samotnik.XnBin;
+                ileRodzicow--;
+            }
+            Random random = new Random();
+            // osobni są brane parami i mają wspólny punkt przecięcia
+            while (ileRodzicow>0)
+            {
+                int punktP = random.Next(1,(int)L);
+                Osobnik rodzicA = osobniki.FindAll(o => o.CzyRodzic != "-" && o.Dziecko=="").First();
+                Osobnik rodzicB = osobniki.FindAll(o => o.CzyRodzic != "-" && o.Dziecko == "").Skip(1).First();
+                rodzicA.Pc = punktP;
+                rodzicB.Pc = punktP;
+                List<string> dzieci = krzyzowania(rodzicA, rodzicB);
+                rodzicA.Dziecko = dzieci.First();
+                rodzicA.PopulacjaPoKrzyzowaniu = dzieci.First();
+                rodzicB.Dziecko = dzieci.Last();
+                rodzicB.PopulacjaPoKrzyzowaniu = dzieci.Last();
+                ileRodzicow -=2;
+            }
+
+
+            return osobniki;
+        }
+        // robienie dzieci z osobników
+        private static List<string> krzyzowania(Osobnik rodzicA,Osobnik rodzicB)
+        {
+            List<string> dzieci = new List<string>();
+            dzieci.Add(rodzicA.CzyRodzic.Substring(0,rodzicA.Pc)+ rodzicB.CzyRodzic.Substring(rodzicA.Pc));
+            dzieci.Add(rodzicB.CzyRodzic.Substring(0, rodzicA.Pc) + rodzicA.CzyRodzic.Substring(rodzicA.Pc));
+            return dzieci;
+        }
+        // wybiera które osobniki zostaną rodzicami
+        public static List<Osobnik> DecyzjaODziecku(List<Osobnik> osobniki,double Pk)
+        {
+            Random rnd = new Random();
+            foreach (var osobnik in osobniki)
+            {
+                if (rnd.NextDouble()<Pk)
+                {
+                    osobnik.CzyRodzic = osobnik.XnBin;
+                }
+                else
+                {
+                    osobnik.CzyRodzic = "-";
+                }
+            }
+            return osobniki;
+        }
+        // Przlicza Xn to XnBin dla całej populacji
+        public static List<Osobnik> XnToXnBin(List<Osobnik> osobniki, int a, int b, double l)
+        {
+            osobniki.ForEach(o => o.XnBin = Przybornik.przeliczNaBin(Przybornik.przeliczNaXInt(o.Xn,a,b,l), l));
+            return osobniki;
+        }
+        private static double przeliczNaXInt(double XReal, int a, int b, double l)
+        {
+            return Math.Round(1.0 / (b - a) * (XReal - a) * (Math.Pow(2, l) - 1));
+        }
+        private static string przeliczNaBin(double XInt, double l)
+        {
+            string xbin = Convert.ToString((long)XInt, 2);
+            while (xbin.Length < l)
+            {
+                xbin = "0" + xbin;
+            }
+            return xbin;
+        } 
         // Metoda agregująca elementy selekcji osobników
         public static List<Osobnik> KrecimyRuletka(List<Osobnik> _osobniki,double D)
         {
@@ -103,6 +240,22 @@ namespace kod
         private static double _obliczGxOsobnika(Osobnik osobnik,double fxmax,double D)
         {
             return osobnik.Fx - fxmax + D;
+        }
+        private static double mantysa(double x)
+        {
+            return x - Math.Floor(x);
+        }
+        private static int xBinToXInt(string XBin)
+        {
+            return Convert.ToInt32(XBin, 2);
+        }
+        private static double xIntToXReal(int XInt,int a, int b, double l, int precision)
+        {
+            return Math.Round((((b - a) * XInt) / (Math.Pow(2, l) - 1)) + a, precision);
+        }
+        private static double obliczFX(double XReal)
+        {
+            return mantysa(XReal) * ((Math.Cos(20 * Math.PI * XReal) - Math.Sin(XReal)));
         }
     }
 }

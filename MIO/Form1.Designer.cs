@@ -40,13 +40,22 @@
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
             osobnikBindingSource = new BindingSource(components);
+            label5 = new Label();
+            label6 = new Label();
+            texBoxPk = new TextBox();
+            textBoxPm = new TextBox();
             xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Gx = new DataGridViewTextBoxColumn();
-            P = new DataGridViewTextBoxColumn();
-            Q = new DataGridViewTextBoxColumn();
-            R = new DataGridViewTextBoxColumn();
             Xn = new DataGridViewTextBoxColumn();
+            XnBin = new DataGridViewTextBoxColumn();
+            CzyRodzic = new DataGridViewTextBoxColumn();
+            Pc = new DataGridViewTextBoxColumn();
+            Dziecko = new DataGridViewTextBoxColumn();
+            PopulacjaPoKrzyzowaniu = new DataGridViewTextBoxColumn();
+            MutowaneElementy = new DataGridViewTextBoxColumn();
+            OsobnikPoMutacji = new DataGridViewTextBoxColumn();
+            XRealKoncowy = new DataGridViewTextBoxColumn();
+            FxKoncowy = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -135,17 +144,51 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Gx, P, Q, R, Xn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu, MutowaneElementy, OsobnikPoMutacji, XRealKoncowy, FxKoncowy });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(14, 119);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(774, 304);
+            dataGridView1.Size = new Size(1441, 304);
             dataGridView1.TabIndex = 9;
             // 
             // osobnikBindingSource
             // 
             osobnikBindingSource.DataSource = typeof(kod.Osobnik);
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(343, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(34, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Pk = ";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(426, 41);
+            label6.Name = "label6";
+            label6.Size = new Size(36, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Pm =";
+            // 
+            // texBoxPk
+            // 
+            texBoxPk.Location = new Point(383, 34);
+            texBoxPk.Name = "texBoxPk";
+            texBoxPk.Size = new Size(37, 23);
+            texBoxPk.TabIndex = 12;
+            texBoxPk.Text = "0.5";
+            // 
+            // textBoxPm
+            // 
+            textBoxPm.Location = new Point(468, 38);
+            textBoxPm.Name = "textBoxPm";
+            textBoxPm.Size = new Size(47, 23);
+            textBoxPm.TabIndex = 13;
+            textBoxPm.Text = "0.0001";
             // 
             // xRealDataGridViewTextBoxColumn
             // 
@@ -161,34 +204,6 @@
             fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
             fxDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Gx
-            // 
-            Gx.DataPropertyName = "Gx";
-            Gx.HeaderText = "g(x)";
-            Gx.Name = "Gx";
-            Gx.ReadOnly = true;
-            // 
-            // P
-            // 
-            P.DataPropertyName = "P";
-            P.HeaderText = "Pi";
-            P.Name = "P";
-            P.ReadOnly = true;
-            // 
-            // Q
-            // 
-            Q.DataPropertyName = "Q";
-            Q.HeaderText = "Qi";
-            Q.Name = "Q";
-            Q.ReadOnly = true;
-            // 
-            // R
-            // 
-            R.DataPropertyName = "R";
-            R.HeaderText = "R";
-            R.Name = "R";
-            R.ReadOnly = true;
-            // 
             // Xn
             // 
             Xn.DataPropertyName = "Xn";
@@ -196,11 +211,78 @@
             Xn.Name = "Xn";
             Xn.ReadOnly = true;
             // 
+            // XnBin
+            // 
+            XnBin.DataPropertyName = "XnBin";
+            XnBin.HeaderText = "XnBin";
+            XnBin.Name = "XnBin";
+            XnBin.ReadOnly = true;
+            // 
+            // CzyRodzic
+            // 
+            CzyRodzic.DataPropertyName = "CzyRodzic";
+            CzyRodzic.HeaderText = "Populacja Rodzicow";
+            CzyRodzic.Name = "CzyRodzic";
+            CzyRodzic.ReadOnly = true;
+            // 
+            // Pc
+            // 
+            Pc.DataPropertyName = "Pc";
+            Pc.HeaderText = "Pc";
+            Pc.Name = "Pc";
+            Pc.ReadOnly = true;
+            // 
+            // Dziecko
+            // 
+            Dziecko.DataPropertyName = "Dziecko";
+            Dziecko.HeaderText = "Populacja Dziecka";
+            Dziecko.Name = "Dziecko";
+            Dziecko.ReadOnly = true;
+            // 
+            // PopulacjaPoKrzyzowaniu
+            // 
+            PopulacjaPoKrzyzowaniu.DataPropertyName = "PopulacjaPoKrzyzowaniu";
+            PopulacjaPoKrzyzowaniu.HeaderText = "Populacja Po Krzyzowaniu";
+            PopulacjaPoKrzyzowaniu.Name = "PopulacjaPoKrzyzowaniu";
+            PopulacjaPoKrzyzowaniu.ReadOnly = true;
+            // 
+            // MutowaneElementy
+            // 
+            MutowaneElementy.DataPropertyName = "MutowaneElementy";
+            MutowaneElementy.HeaderText = "Mutowane Elementy";
+            MutowaneElementy.Name = "MutowaneElementy";
+            MutowaneElementy.ReadOnly = true;
+            // 
+            // OsobnikPoMutacji
+            // 
+            OsobnikPoMutacji.DataPropertyName = "OsobnikPoMutacji";
+            OsobnikPoMutacji.HeaderText = "Osobnik Po Mutacji";
+            OsobnikPoMutacji.Name = "OsobnikPoMutacji";
+            OsobnikPoMutacji.ReadOnly = true;
+            // 
+            // XRealKoncowy
+            // 
+            XRealKoncowy.DataPropertyName = "XRealKoncowy";
+            XRealKoncowy.HeaderText = "XReal";
+            XRealKoncowy.Name = "XRealKoncowy";
+            XRealKoncowy.ReadOnly = true;
+            // 
+            // FxKoncowy
+            // 
+            FxKoncowy.DataPropertyName = "FxKoncowy";
+            FxKoncowy.HeaderText = "F(x)";
+            FxKoncowy.Name = "FxKoncowy";
+            FxKoncowy.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1518, 450);
+            Controls.Add(textBoxPm);
+            Controls.Add(texBoxPk);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(buttonGeneruj);
             Controls.Add(label4);
@@ -232,12 +314,21 @@
         private Button buttonGeneruj;
         private DataGridView dataGridView1;
         private BindingSource osobnikBindingSource;
+        private Label label5;
+        private Label label6;
+        private TextBox texBoxPk;
+        private TextBox textBoxPm;
         private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Gx;
-        private DataGridViewTextBoxColumn P;
-        private DataGridViewTextBoxColumn Q;
-        private DataGridViewTextBoxColumn R;
         private DataGridViewTextBoxColumn Xn;
+        private DataGridViewTextBoxColumn XnBin;
+        private DataGridViewTextBoxColumn CzyRodzic;
+        private DataGridViewTextBoxColumn Pc;
+        private DataGridViewTextBoxColumn Dziecko;
+        private DataGridViewTextBoxColumn PopulacjaPoKrzyzowaniu;
+        private DataGridViewTextBoxColumn MutowaneElementy;
+        private DataGridViewTextBoxColumn OsobnikPoMutacji;
+        private DataGridViewTextBoxColumn XRealKoncowy;
+        private DataGridViewTextBoxColumn FxKoncowy;
     }
 }
