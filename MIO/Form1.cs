@@ -88,10 +88,16 @@ namespace MIO
                     wynikiPopulacji.Add(new WynikPopulacji(_osobniki.Max(o => o.Fx), _osobniki.Average(o => o.Fx), _osobniki.Min(O => O.Fx), i));
                 }
                 //ScottPlot.Plot myPlot = new (400, 300);
-                formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxMax).ToArray());
-                formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxAvg).ToArray());
-                formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxMin).ToArray());
+                var fMax= formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxMax).ToArray());
+                fMax.LegendText = "F(x) Max";
+                var fAvg = formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxAvg).ToArray());
+                fAvg.LegendText = "F(x) Avg";
+                var fMin = formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxMin).ToArray());
+                fMin.LegendText = "F(x) Min";
                 formsPlotWyniki.Refresh();
+                formsPlotWyniki.Plot.ShowLegend();
+                //formsPlotWyniki.Plot.Axes.Title.Label.Text ="Wyniki poszczególnych populacji dla plrametrów N = "+N+" Pk = "+Pk+" Pm = "+Pm+" T = "+T;
+                
                 osobnikBindingSource.ResetBindings(false);
                 osobnikBindingSource.DataSource = _osobniki;
 
