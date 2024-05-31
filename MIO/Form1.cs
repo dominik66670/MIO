@@ -1,4 +1,5 @@
 using kod;
+using ScottPlot;
 using System.CodeDom;
 namespace MIO
 {
@@ -92,7 +93,9 @@ namespace MIO
                 formsPlotWyniki.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), wynikiPopulacji.Select(o => o.FxMin).ToArray());
                 formsPlotWyniki.Refresh();
                 osobnikBindingSource.ResetBindings(false);
-                
+                osobnikBindingSource.DataSource = _osobniki;
+
+
 
             }
             catch (Exception ex)
