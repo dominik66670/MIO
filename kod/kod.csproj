@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ScottPlot" Version="5.0.34" />
+    <PackageReference Include="ScottPlot.WinForms" Version="5.0.34" />
+  </ItemGroup>
+
 </Project>

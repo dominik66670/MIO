@@ -39,23 +39,18 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
+            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            XBin = new DataGridViewTextBoxColumn();
+            Gx = new DataGridViewTextBoxColumn();
             osobnikBindingSource = new BindingSource(components);
             label5 = new Label();
             label6 = new Label();
             texBoxPk = new TextBox();
             textBoxPm = new TextBox();
-            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Xn = new DataGridViewTextBoxColumn();
-            XnBin = new DataGridViewTextBoxColumn();
-            CzyRodzic = new DataGridViewTextBoxColumn();
-            Pc = new DataGridViewTextBoxColumn();
-            Dziecko = new DataGridViewTextBoxColumn();
-            PopulacjaPoKrzyzowaniu = new DataGridViewTextBoxColumn();
-            MutowaneElementy = new DataGridViewTextBoxColumn();
-            OsobnikPoMutacji = new DataGridViewTextBoxColumn();
-            XRealKoncowy = new DataGridViewTextBoxColumn();
-            FxKoncowy = new DataGridViewTextBoxColumn();
+            label7 = new Label();
+            textBoxT = new TextBox();
+            formsPlotWyniki = new ScottPlot.WinForms.FormsPlot();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             SuspendLayout();
@@ -130,7 +125,7 @@
             // 
             // buttonGeneruj
             // 
-            buttonGeneruj.Location = new Point(585, 37);
+            buttonGeneruj.Location = new Point(640, 38);
             buttonGeneruj.Name = "buttonGeneruj";
             buttonGeneruj.Size = new Size(75, 23);
             buttonGeneruj.TabIndex = 8;
@@ -144,13 +139,41 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, Xn, XnBin, CzyRodzic, Pc, Dziecko, PopulacjaPoKrzyzowaniu, MutowaneElementy, OsobnikPoMutacji, XRealKoncowy, FxKoncowy });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, XBin, Gx });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(14, 119);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(1441, 304);
+            dataGridView1.Size = new Size(549, 491);
             dataGridView1.TabIndex = 9;
+            // 
+            // xRealDataGridViewTextBoxColumn
+            // 
+            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
+            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
+            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
+            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fxDataGridViewTextBoxColumn
+            // 
+            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
+            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // XBin
+            // 
+            XBin.DataPropertyName = "XBin";
+            XBin.HeaderText = "XBin";
+            XBin.Name = "XBin";
+            XBin.ReadOnly = true;
+            // 
+            // Gx
+            // 
+            Gx.DataPropertyName = "Gx";
+            Gx.HeaderText = "Gx";
+            Gx.Name = "Gx";
+            Gx.ReadOnly = true;
             // 
             // osobnikBindingSource
             // 
@@ -190,95 +213,39 @@
             textBoxPm.TabIndex = 13;
             textBoxPm.Text = "0.0001";
             // 
-            // xRealDataGridViewTextBoxColumn
+            // label7
             // 
-            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
-            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
-            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
-            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            label7.AutoSize = true;
+            label7.Location = new Point(539, 42);
+            label7.Name = "label7";
+            label7.Size = new Size(24, 15);
+            label7.TabIndex = 14;
+            label7.Text = "T =";
             // 
-            // fxDataGridViewTextBoxColumn
+            // textBoxT
             // 
-            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
-            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
-            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
-            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            textBoxT.Location = new Point(569, 39);
+            textBoxT.Name = "textBoxT";
+            textBoxT.Size = new Size(36, 23);
+            textBoxT.TabIndex = 15;
+            textBoxT.Text = "80";
             // 
-            // Xn
+            // formsPlotWyniki
             // 
-            Xn.DataPropertyName = "Xn";
-            Xn.HeaderText = "Xn";
-            Xn.Name = "Xn";
-            Xn.ReadOnly = true;
-            // 
-            // XnBin
-            // 
-            XnBin.DataPropertyName = "XnBin";
-            XnBin.HeaderText = "XnBin";
-            XnBin.Name = "XnBin";
-            XnBin.ReadOnly = true;
-            // 
-            // CzyRodzic
-            // 
-            CzyRodzic.DataPropertyName = "CzyRodzic";
-            CzyRodzic.HeaderText = "Populacja Rodzicow";
-            CzyRodzic.Name = "CzyRodzic";
-            CzyRodzic.ReadOnly = true;
-            // 
-            // Pc
-            // 
-            Pc.DataPropertyName = "Pc";
-            Pc.HeaderText = "Pc";
-            Pc.Name = "Pc";
-            Pc.ReadOnly = true;
-            // 
-            // Dziecko
-            // 
-            Dziecko.DataPropertyName = "Dziecko";
-            Dziecko.HeaderText = "Populacja Dziecka";
-            Dziecko.Name = "Dziecko";
-            Dziecko.ReadOnly = true;
-            // 
-            // PopulacjaPoKrzyzowaniu
-            // 
-            PopulacjaPoKrzyzowaniu.DataPropertyName = "PopulacjaPoKrzyzowaniu";
-            PopulacjaPoKrzyzowaniu.HeaderText = "Populacja Po Krzyzowaniu";
-            PopulacjaPoKrzyzowaniu.Name = "PopulacjaPoKrzyzowaniu";
-            PopulacjaPoKrzyzowaniu.ReadOnly = true;
-            // 
-            // MutowaneElementy
-            // 
-            MutowaneElementy.DataPropertyName = "MutowaneElementy";
-            MutowaneElementy.HeaderText = "Mutowane Elementy";
-            MutowaneElementy.Name = "MutowaneElementy";
-            MutowaneElementy.ReadOnly = true;
-            // 
-            // OsobnikPoMutacji
-            // 
-            OsobnikPoMutacji.DataPropertyName = "OsobnikPoMutacji";
-            OsobnikPoMutacji.HeaderText = "Osobnik Po Mutacji";
-            OsobnikPoMutacji.Name = "OsobnikPoMutacji";
-            OsobnikPoMutacji.ReadOnly = true;
-            // 
-            // XRealKoncowy
-            // 
-            XRealKoncowy.DataPropertyName = "XRealKoncowy";
-            XRealKoncowy.HeaderText = "XReal";
-            XRealKoncowy.Name = "XRealKoncowy";
-            XRealKoncowy.ReadOnly = true;
-            // 
-            // FxKoncowy
-            // 
-            FxKoncowy.DataPropertyName = "FxKoncowy";
-            FxKoncowy.HeaderText = "F(x)";
-            FxKoncowy.Name = "FxKoncowy";
-            FxKoncowy.ReadOnly = true;
+            formsPlotWyniki.DisplayScale = 1F;
+            formsPlotWyniki.Location = new Point(608, 119);
+            formsPlotWyniki.Name = "formsPlotWyniki";
+            formsPlotWyniki.Size = new Size(836, 519);
+            formsPlotWyniki.TabIndex = 16;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1518, 450);
+            ClientSize = new Size(1526, 690);
+            Controls.Add(formsPlotWyniki);
+            Controls.Add(textBoxT);
+            Controls.Add(label7);
             Controls.Add(textBoxPm);
             Controls.Add(texBoxPk);
             Controls.Add(label6);
@@ -318,17 +285,12 @@
         private Label label6;
         private TextBox texBoxPk;
         private TextBox textBoxPm;
+        private Label label7;
+        private TextBox textBoxT;
         private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Xn;
-        private DataGridViewTextBoxColumn XnBin;
-        private DataGridViewTextBoxColumn CzyRodzic;
-        private DataGridViewTextBoxColumn Pc;
-        private DataGridViewTextBoxColumn Dziecko;
-        private DataGridViewTextBoxColumn PopulacjaPoKrzyzowaniu;
-        private DataGridViewTextBoxColumn MutowaneElementy;
-        private DataGridViewTextBoxColumn OsobnikPoMutacji;
-        private DataGridViewTextBoxColumn XRealKoncowy;
-        private DataGridViewTextBoxColumn FxKoncowy;
+        private DataGridViewTextBoxColumn XBin;
+        private DataGridViewTextBoxColumn Gx;
+        private ScottPlot.WinForms.FormsPlot formsPlotWyniki;
     }
 }
