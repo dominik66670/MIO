@@ -146,6 +146,7 @@ namespace MIO
                     new XElement("N", w.N),
                     new XElement("Pk", w.Pk),
                     new XElement("Pm", w.Pm),
+                    new XElement("T", w.T),
                     new XElement("FxAvg", w.FxAvg)
                     ))
                 ).Save("Wyniki.xml");
