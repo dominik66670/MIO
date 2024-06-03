@@ -51,13 +51,31 @@
             label7 = new Label();
             textBoxT = new TextBox();
             formsPlotWyniki = new ScottPlot.WinForms.FormsPlot();
+            Algorytm = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            label8 = new Label();
+            progressBar1 = new ProgressBar();
+            dataGridView2 = new DataGridView();
+            nDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pmDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxAvgDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            wielkiWynikBindingSource = new BindingSource(components);
+            buttonWielkieTesty = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
+            Algorytm.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)wielkiWynikBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBoxA
             // 
-            textBoxA.Location = new Point(44, 34);
+            textBoxA.Location = new Point(6, 15);
             textBoxA.Name = "textBoxA";
             textBoxA.Size = new Size(31, 23);
             textBoxA.TabIndex = 0;
@@ -65,7 +83,7 @@
             // 
             // textBoxB
             // 
-            textBoxB.Location = new Point(122, 34);
+            textBoxB.Location = new Point(84, 15);
             textBoxB.Name = "textBoxB";
             textBoxB.Size = new Size(30, 23);
             textBoxB.TabIndex = 1;
@@ -73,7 +91,7 @@
             // 
             // textBoxPrecyzja
             // 
-            textBoxPrecyzja.Location = new Point(205, 34);
+            textBoxPrecyzja.Location = new Point(167, 15);
             textBoxPrecyzja.Name = "textBoxPrecyzja";
             textBoxPrecyzja.Size = new Size(49, 23);
             textBoxPrecyzja.TabIndex = 2;
@@ -81,7 +99,7 @@
             // 
             // textBoxN
             // 
-            textBoxN.Location = new Point(296, 34);
+            textBoxN.Location = new Point(258, 15);
             textBoxN.Name = "textBoxN";
             textBoxN.Size = new Size(41, 23);
             textBoxN.TabIndex = 3;
@@ -90,7 +108,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 37);
+            label1.Location = new Point(-24, 18);
             label1.Name = "label1";
             label1.Size = new Size(24, 15);
             label1.TabIndex = 4;
@@ -99,7 +117,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(91, 37);
+            label2.Location = new Point(53, 18);
             label2.Name = "label2";
             label2.Size = new Size(25, 15);
             label2.TabIndex = 5;
@@ -108,7 +126,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(170, 37);
+            label3.Location = new Point(132, 18);
             label3.Name = "label3";
             label3.Size = new Size(29, 15);
             label3.TabIndex = 6;
@@ -117,7 +135,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(260, 37);
+            label4.Location = new Point(222, 18);
             label4.Name = "label4";
             label4.Size = new Size(30, 15);
             label4.TabIndex = 7;
@@ -125,7 +143,7 @@
             // 
             // buttonGeneruj
             // 
-            buttonGeneruj.Location = new Point(640, 38);
+            buttonGeneruj.Location = new Point(591, 23);
             buttonGeneruj.Name = "buttonGeneruj";
             buttonGeneruj.Size = new Size(75, 23);
             buttonGeneruj.TabIndex = 8;
@@ -141,10 +159,10 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, XBin, Gx });
             dataGridView1.DataSource = osobnikBindingSource;
-            dataGridView1.Location = new Point(14, 119);
+            dataGridView1.Location = new Point(6, 49);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(549, 491);
+            dataGridView1.Size = new Size(549, 562);
             dataGridView1.TabIndex = 9;
             // 
             // xRealDataGridViewTextBoxColumn
@@ -182,7 +200,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(343, 37);
+            label5.Location = new Point(305, 18);
             label5.Name = "label5";
             label5.Size = new Size(34, 15);
             label5.TabIndex = 10;
@@ -191,7 +209,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(426, 41);
+            label6.Location = new Point(388, 22);
             label6.Name = "label6";
             label6.Size = new Size(36, 15);
             label6.TabIndex = 11;
@@ -199,7 +217,7 @@
             // 
             // texBoxPk
             // 
-            texBoxPk.Location = new Point(383, 34);
+            texBoxPk.Location = new Point(345, 15);
             texBoxPk.Name = "texBoxPk";
             texBoxPk.Size = new Size(37, 23);
             texBoxPk.TabIndex = 12;
@@ -207,7 +225,7 @@
             // 
             // textBoxPm
             // 
-            textBoxPm.Location = new Point(468, 38);
+            textBoxPm.Location = new Point(430, 19);
             textBoxPm.Name = "textBoxPm";
             textBoxPm.Size = new Size(47, 23);
             textBoxPm.TabIndex = 13;
@@ -216,7 +234,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(539, 42);
+            label7.Location = new Point(501, 23);
             label7.Name = "label7";
             label7.Size = new Size(24, 15);
             label7.TabIndex = 14;
@@ -224,7 +242,7 @@
             // 
             // textBoxT
             // 
-            textBoxT.Location = new Point(569, 39);
+            textBoxT.Location = new Point(531, 20);
             textBoxT.Name = "textBoxT";
             textBoxT.Size = new Size(36, 23);
             textBoxT.TabIndex = 15;
@@ -233,39 +251,154 @@
             // formsPlotWyniki
             // 
             formsPlotWyniki.DisplayScale = 1F;
-            formsPlotWyniki.Location = new Point(608, 119);
+            formsPlotWyniki.Location = new Point(672, 49);
             formsPlotWyniki.Name = "formsPlotWyniki";
             formsPlotWyniki.Size = new Size(836, 519);
             formsPlotWyniki.TabIndex = 16;
+            // 
+            // Algorytm
+            // 
+            Algorytm.Controls.Add(tabPage1);
+            Algorytm.Controls.Add(tabPage2);
+            Algorytm.Location = new Point(12, 13);
+            Algorytm.Name = "Algorytm";
+            Algorytm.SelectedIndex = 0;
+            Algorytm.Size = new Size(1512, 654);
+            Algorytm.TabIndex = 17;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(formsPlotWyniki);
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(textBoxT);
+            tabPage1.Controls.Add(buttonGeneruj);
+            tabPage1.Controls.Add(label7);
+            tabPage1.Controls.Add(textBoxA);
+            tabPage1.Controls.Add(textBoxPm);
+            tabPage1.Controls.Add(textBoxB);
+            tabPage1.Controls.Add(texBoxPk);
+            tabPage1.Controls.Add(textBoxPrecyzja);
+            tabPage1.Controls.Add(label6);
+            tabPage1.Controls.Add(textBoxN);
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1504, 626);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Algorytm";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(label8);
+            tabPage2.Controls.Add(progressBar1);
+            tabPage2.Controls.Add(dataGridView2);
+            tabPage2.Controls.Add(buttonWielkieTesty);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1504, 626);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Wielke Testy";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("ROG Fonts", 13F);
+            label8.Location = new Point(683, 116);
+            label8.Name = "label8";
+            label8.Size = new Size(120, 22);
+            label8.TabIndex = 3;
+            label8.Text = "Progres";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(591, 141);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(308, 49);
+            progressBar1.TabIndex = 2;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToOrderColumns = true;
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { nDataGridViewTextBoxColumn, pkDataGridViewTextBoxColumn, pmDataGridViewTextBoxColumn, tDataGridViewTextBoxColumn, fxAvgDataGridViewTextBoxColumn });
+            dataGridView2.DataSource = wielkiWynikBindingSource;
+            dataGridView2.Location = new Point(919, 6);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(546, 520);
+            dataGridView2.TabIndex = 1;
+            // 
+            // nDataGridViewTextBoxColumn
+            // 
+            nDataGridViewTextBoxColumn.DataPropertyName = "N";
+            nDataGridViewTextBoxColumn.HeaderText = "N";
+            nDataGridViewTextBoxColumn.Name = "nDataGridViewTextBoxColumn";
+            // 
+            // pkDataGridViewTextBoxColumn
+            // 
+            pkDataGridViewTextBoxColumn.DataPropertyName = "Pk";
+            pkDataGridViewTextBoxColumn.HeaderText = "Pk";
+            pkDataGridViewTextBoxColumn.Name = "pkDataGridViewTextBoxColumn";
+            // 
+            // pmDataGridViewTextBoxColumn
+            // 
+            pmDataGridViewTextBoxColumn.DataPropertyName = "Pm";
+            pmDataGridViewTextBoxColumn.HeaderText = "Pm";
+            pmDataGridViewTextBoxColumn.Name = "pmDataGridViewTextBoxColumn";
+            // 
+            // tDataGridViewTextBoxColumn
+            // 
+            tDataGridViewTextBoxColumn.DataPropertyName = "T";
+            tDataGridViewTextBoxColumn.HeaderText = "T";
+            tDataGridViewTextBoxColumn.Name = "tDataGridViewTextBoxColumn";
+            // 
+            // fxAvgDataGridViewTextBoxColumn
+            // 
+            fxAvgDataGridViewTextBoxColumn.DataPropertyName = "FxAvg";
+            fxAvgDataGridViewTextBoxColumn.HeaderText = "FxAvg";
+            fxAvgDataGridViewTextBoxColumn.Name = "fxAvgDataGridViewTextBoxColumn";
+            // 
+            // wielkiWynikBindingSource
+            // 
+            wielkiWynikBindingSource.DataSource = typeof(kod.WielkiWynik);
+            // 
+            // buttonWielkieTesty
+            // 
+            buttonWielkieTesty.Font = new Font("ROG Fonts", 30F);
+            buttonWielkieTesty.Location = new Point(591, 6);
+            buttonWielkieTesty.Name = "buttonWielkieTesty";
+            buttonWielkieTesty.Size = new Size(308, 92);
+            buttonWielkieTesty.TabIndex = 0;
+            buttonWielkieTesty.Text = "Start";
+            buttonWielkieTesty.UseVisualStyleBackColor = true;
+            buttonWielkieTesty.Click += buttonWielkieTesty_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1526, 690);
-            Controls.Add(formsPlotWyniki);
-            Controls.Add(textBoxT);
-            Controls.Add(label7);
-            Controls.Add(textBoxPm);
-            Controls.Add(texBoxPk);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(dataGridView1);
-            Controls.Add(buttonGeneruj);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBoxN);
-            Controls.Add(textBoxPrecyzja);
-            Controls.Add(textBoxB);
-            Controls.Add(textBoxA);
+            ClientSize = new Size(1581, 660);
+            Controls.Add(Algorytm);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).EndInit();
+            Algorytm.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)wielkiWynikBindingSource).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -292,5 +425,18 @@
         private DataGridViewTextBoxColumn XBin;
         private DataGridViewTextBoxColumn Gx;
         private ScottPlot.WinForms.FormsPlot formsPlotWyniki;
+        private TabControl Algorytm;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Button buttonWielkieTesty;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn nDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pkDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pmDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fxAvgDataGridViewTextBoxColumn;
+        private BindingSource wielkiWynikBindingSource;
+        private ProgressBar progressBar1;
+        private Label label8;
     }
 }

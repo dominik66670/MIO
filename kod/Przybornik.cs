@@ -9,6 +9,43 @@ namespace kod
 {
     public static class Przybornik
     {
+        // zwraca średnie przystosowanie populacji po T pokoleniech
+        public static double Testy(int N, double Pk, double Pm, int T)
+        {
+            int a = -4;
+            int b = 12;
+            int precyzja = 3;
+            double D = 0.001;
+            List<Osobnik> _osobniki = new List<Osobnik>();
+            var L = Przybornik.ObliczL(a, b, precyzja);
+            _osobniki.Clear();
+            // Losowanie liczb z zadanego zakresu ze wskazaną precyzją
+            Przybornik.Generuj(a, b, precyzja, N).ForEach(x =>
+            {
+                _osobniki.Add(new Osobnik(x, L, a, b, precyzja));
+            });
+            // selekcja populacji
+            _osobniki = Przybornik.KrecimyRuletka(_osobniki, D);
+            _osobniki = Przybornik.XnToXnBin(_osobniki, a, b, L);
+            _osobniki = Przybornik.DecyzjaODziecku(_osobniki, Pk);
+            _osobniki = Przybornik.RobienieDzieci(_osobniki, L);
+            _osobniki = Przybornik.Mutacje(_osobniki, Pm);
+            _osobniki = Przybornik.KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(_osobniki, a, b, L, precyzja);
+            List<Osobnik> nowePokolenie = new List<Osobnik>();
+            for (int i = 1; i < T; i++)
+            {
+                nowePokolenie = new List<Osobnik>();
+                _osobniki.ForEach(o => nowePokolenie.Add(new Osobnik(o.XRealKoncowy, L, a, b, precyzja)));
+                _osobniki = nowePokolenie;
+                _osobniki = Przybornik.KrecimyRuletka(_osobniki, D);
+                _osobniki = Przybornik.XnToXnBin(_osobniki, a, b, L);
+                _osobniki = Przybornik.DecyzjaODziecku(_osobniki, Pk);
+                _osobniki = Przybornik.RobienieDzieci(_osobniki, L);
+                _osobniki = Przybornik.Mutacje(_osobniki, Pm);
+                _osobniki = Przybornik.KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(_osobniki, a, b, L, precyzja);
+            }
+            return _osobniki.Average(o => o.Fx);
+        }
         public static List<Osobnik> KonwersjaXBinXRealDlaKoncowejPopulacjiIOcena(List<Osobnik> osobniki, int a, int b, double l, int precision)
         {
             // konwersja do xReal
