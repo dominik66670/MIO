@@ -39,10 +39,6 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
-            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            XBin = new DataGridViewTextBoxColumn();
-            Gx = new DataGridViewTextBoxColumn();
             osobnikBindingSource = new BindingSource(components);
             label5 = new Label();
             label6 = new Label();
@@ -64,6 +60,9 @@
             fxAvgDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             wielkiWynikBindingSource = new BindingSource(components);
             buttonWielkieTesty = new Button();
+            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            XBin = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             Algorytm.SuspendLayout();
@@ -157,41 +156,13 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, XBin, Gx });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { xRealDataGridViewTextBoxColumn, fxDataGridViewTextBoxColumn, XBin });
             dataGridView1.DataSource = osobnikBindingSource;
             dataGridView1.Location = new Point(6, 49);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(549, 562);
             dataGridView1.TabIndex = 9;
-            // 
-            // xRealDataGridViewTextBoxColumn
-            // 
-            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
-            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
-            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
-            xRealDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fxDataGridViewTextBoxColumn
-            // 
-            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
-            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
-            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
-            fxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // XBin
-            // 
-            XBin.DataPropertyName = "XBin";
-            XBin.HeaderText = "XBin";
-            XBin.Name = "XBin";
-            XBin.ReadOnly = true;
-            // 
-            // Gx
-            // 
-            Gx.DataPropertyName = "Gx";
-            Gx.HeaderText = "Gx";
-            Gx.Name = "Gx";
-            Gx.ReadOnly = true;
             // 
             // osobnikBindingSource
             // 
@@ -381,6 +352,27 @@
             buttonWielkieTesty.UseVisualStyleBackColor = true;
             buttonWielkieTesty.Click += buttonWielkieTesty_Click;
             // 
+            // xRealDataGridViewTextBoxColumn
+            // 
+            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
+            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
+            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
+            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fxDataGridViewTextBoxColumn
+            // 
+            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
+            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // XBin
+            // 
+            XBin.DataPropertyName = "XBin";
+            XBin.HeaderText = "XBin";
+            XBin.Name = "XBin";
+            XBin.ReadOnly = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -420,10 +412,6 @@
         private TextBox textBoxPm;
         private Label label7;
         private TextBox textBoxT;
-        private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn XBin;
-        private DataGridViewTextBoxColumn Gx;
         private ScottPlot.WinForms.FormsPlot formsPlotWyniki;
         private TabControl Algorytm;
         private TabPage tabPage1;
@@ -438,5 +426,8 @@
         private BindingSource wielkiWynikBindingSource;
         private ProgressBar progressBar1;
         private Label label8;
+        private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn XBin;
     }
 }

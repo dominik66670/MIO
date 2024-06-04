@@ -101,6 +101,7 @@ namespace MIO
                 //formsPlotWyniki.Plot.Axes.Title.Label.Text ="Wyniki poszczególnych populacji dla plrametrów N = "+N+" Pk = "+Pk+" Pm = "+Pm+" T = "+T;
 
                 osobnikBindingSource.ResetBindings(false);
+                _osobniki = _osobniki.OrderByDescending(o => o.Fx).ToList();
                 osobnikBindingSource.DataSource = _osobniki;
 
 
