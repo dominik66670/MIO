@@ -39,6 +39,9 @@
             label4 = new Label();
             buttonGeneruj = new Button();
             dataGridView1 = new DataGridView();
+            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            XBin = new DataGridViewTextBoxColumn();
             osobnikBindingSource = new BindingSource(components);
             label5 = new Label();
             label6 = new Label();
@@ -60,9 +63,19 @@
             fxAvgDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             wielkiWynikBindingSource = new BindingSource(components);
             buttonWielkieTesty = new Button();
-            xRealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            XBin = new DataGridViewTextBoxColumn();
+            tabPage3 = new TabPage();
+            buttonStartGEO = new Button();
+            textBoxTetGEO = new TextBox();
+            textBoxTGEO = new TextBox();
+            textBoxDGEO = new TextBox();
+            textBoxBGEO = new TextBox();
+            textBoxAGEO = new TextBox();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            formsPlotGEO = new ScottPlot.WinForms.FormsPlot();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             Algorytm.SuspendLayout();
@@ -70,6 +83,7 @@
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)wielkiWynikBindingSource).BeginInit();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxA
@@ -164,6 +178,27 @@
             dataGridView1.Size = new Size(549, 562);
             dataGridView1.TabIndex = 9;
             // 
+            // xRealDataGridViewTextBoxColumn
+            // 
+            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
+            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
+            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
+            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fxDataGridViewTextBoxColumn
+            // 
+            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
+            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // XBin
+            // 
+            XBin.DataPropertyName = "XBin";
+            XBin.HeaderText = "XBin";
+            XBin.Name = "XBin";
+            XBin.ReadOnly = true;
+            // 
             // osobnikBindingSource
             // 
             osobnikBindingSource.DataSource = typeof(kod.Osobnik);
@@ -231,6 +266,7 @@
             // 
             Algorytm.Controls.Add(tabPage1);
             Algorytm.Controls.Add(tabPage2);
+            Algorytm.Controls.Add(tabPage3);
             Algorytm.Location = new Point(12, 13);
             Algorytm.Name = "Algorytm";
             Algorytm.SelectedIndex = 0;
@@ -261,7 +297,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1504, 626);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Algorytm";
+            tabPage1.Text = "Algorytm Ewolucyjny";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -275,7 +311,7 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(1504, 626);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Wielke Testy";
+            tabPage2.Text = "Wielke Testy Ewolucyjne";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // label8
@@ -352,26 +388,130 @@
             buttonWielkieTesty.UseVisualStyleBackColor = true;
             buttonWielkieTesty.Click += buttonWielkieTesty_Click;
             // 
-            // xRealDataGridViewTextBoxColumn
+            // tabPage3
             // 
-            xRealDataGridViewTextBoxColumn.DataPropertyName = "XReal";
-            xRealDataGridViewTextBoxColumn.HeaderText = "XReal";
-            xRealDataGridViewTextBoxColumn.Name = "xRealDataGridViewTextBoxColumn";
-            xRealDataGridViewTextBoxColumn.ReadOnly = true;
+            tabPage3.Controls.Add(formsPlotGEO);
+            tabPage3.Controls.Add(buttonStartGEO);
+            tabPage3.Controls.Add(textBoxTetGEO);
+            tabPage3.Controls.Add(textBoxTGEO);
+            tabPage3.Controls.Add(textBoxDGEO);
+            tabPage3.Controls.Add(textBoxBGEO);
+            tabPage3.Controls.Add(textBoxAGEO);
+            tabPage3.Controls.Add(label13);
+            tabPage3.Controls.Add(label12);
+            tabPage3.Controls.Add(label11);
+            tabPage3.Controls.Add(label10);
+            tabPage3.Controls.Add(label9);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1504, 626);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "GEO";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
-            // fxDataGridViewTextBoxColumn
+            // buttonStartGEO
             // 
-            fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
-            fxDataGridViewTextBoxColumn.HeaderText = "f(x)";
-            fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
-            fxDataGridViewTextBoxColumn.ReadOnly = true;
+            buttonStartGEO.Location = new Point(353, 10);
+            buttonStartGEO.Name = "buttonStartGEO";
+            buttonStartGEO.Size = new Size(75, 23);
+            buttonStartGEO.TabIndex = 10;
+            buttonStartGEO.Text = "Start";
+            buttonStartGEO.UseVisualStyleBackColor = true;
+            buttonStartGEO.Click += buttonStartGEO_Click;
             // 
-            // XBin
+            // textBoxTetGEO
             // 
-            XBin.DataPropertyName = "XBin";
-            XBin.HeaderText = "XBin";
-            XBin.Name = "XBin";
-            XBin.ReadOnly = true;
+            textBoxTetGEO.Location = new Point(320, 10);
+            textBoxTetGEO.Name = "textBoxTetGEO";
+            textBoxTetGEO.Size = new Size(27, 23);
+            textBoxTetGEO.TabIndex = 9;
+            textBoxTetGEO.Text = "0,5";
+            // 
+            // textBoxTGEO
+            // 
+            textBoxTGEO.Location = new Point(241, 10);
+            textBoxTGEO.Name = "textBoxTGEO";
+            textBoxTGEO.Size = new Size(34, 23);
+            textBoxTGEO.TabIndex = 8;
+            textBoxTGEO.Text = "2000";
+            // 
+            // textBoxDGEO
+            // 
+            textBoxDGEO.Location = new Point(170, 10);
+            textBoxDGEO.Name = "textBoxDGEO";
+            textBoxDGEO.Size = new Size(35, 23);
+            textBoxDGEO.TabIndex = 7;
+            textBoxDGEO.Text = "0,001";
+            // 
+            // textBoxBGEO
+            // 
+            textBoxBGEO.Location = new Point(102, 10);
+            textBoxBGEO.Name = "textBoxBGEO";
+            textBoxBGEO.Size = new Size(33, 23);
+            textBoxBGEO.TabIndex = 6;
+            textBoxBGEO.Text = "12";
+            // 
+            // textBoxAGEO
+            // 
+            textBoxAGEO.Location = new Point(36, 10);
+            textBoxAGEO.Name = "textBoxAGEO";
+            textBoxAGEO.Size = new Size(26, 23);
+            textBoxAGEO.TabIndex = 5;
+            textBoxAGEO.Text = "-4";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(211, 13);
+            label13.Name = "label13";
+            label13.Size = new Size(24, 15);
+            label13.TabIndex = 4;
+            label13.Text = "T =";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(281, 13);
+            label12.Name = "label12";
+            label12.Size = new Size(33, 15);
+            label12.TabIndex = 3;
+            label12.Text = "Tet =";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(141, 13);
+            label11.Name = "label11";
+            label11.Size = new Size(26, 15);
+            label11.TabIndex = 2;
+            label11.Text = "D =";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(68, 13);
+            label10.Name = "label10";
+            label10.Size = new Size(28, 15);
+            label10.TabIndex = 1;
+            label10.Text = "b = ";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 13);
+            label9.Name = "label9";
+            label9.Size = new Size(24, 15);
+            label9.TabIndex = 0;
+            label9.Text = "a =";
+            // 
+            // formsPlotGEO
+            // 
+            formsPlotGEO.DisplayScale = 1F;
+            formsPlotGEO.Location = new Point(494, 6);
+            formsPlotGEO.Name = "formsPlotGEO";
+            formsPlotGEO.Size = new Size(1010, 471);
+            formsPlotGEO.TabIndex = 11;
             // 
             // Form1
             // 
@@ -390,6 +530,8 @@
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)wielkiWynikBindingSource).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -429,5 +571,18 @@
         private DataGridViewTextBoxColumn xRealDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn XBin;
+        private TabPage tabPage3;
+        private TextBox textBoxAGEO;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private TextBox textBoxTetGEO;
+        private TextBox textBoxTGEO;
+        private TextBox textBoxDGEO;
+        private TextBox textBoxBGEO;
+        private Button buttonStartGEO;
+        private ScottPlot.WinForms.FormsPlot formsPlotGEO;
     }
 }
