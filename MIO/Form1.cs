@@ -355,7 +355,7 @@ namespace MIO
                 
                 
             }
-            MessageBox.Show("Tet "+bestTet.Item1+" jest najlepszy. Osi¹gn¹³ œreni¹ "+bestTet.Item2);
+            labelGEOTetInfo.Text = "Tet " + bestTet.Item1 + " jest najlepszy. Osi¹gn¹³ œreni¹ " + bestTet.Item2;
         }
     }
 }

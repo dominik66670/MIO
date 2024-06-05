@@ -64,6 +64,10 @@
             wielkiWynikBindingSource = new BindingSource(components);
             buttonWielkieTesty = new Button();
             tabPage3 = new TabPage();
+            labelGEOTetInfo = new Label();
+            progressBarGEOT = new ProgressBar();
+            progressBarSzukanieTetGEO = new ProgressBar();
+            buttonStartTestGEO = new Button();
             labelBestGEO = new Label();
             formsPlotGEO = new ScottPlot.WinForms.FormsPlot();
             buttonStartGEO = new Button();
@@ -77,8 +81,6 @@
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
-            buttonStartTestGEO = new Button();
-            progressBarSzukanieTetGEO = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             Algorytm.SuspendLayout();
@@ -393,6 +395,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(labelGEOTetInfo);
+            tabPage3.Controls.Add(progressBarGEOT);
             tabPage3.Controls.Add(progressBarSzukanieTetGEO);
             tabPage3.Controls.Add(buttonStartTestGEO);
             tabPage3.Controls.Add(labelBestGEO);
@@ -415,6 +419,41 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "GEO";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // labelGEOTetInfo
+            // 
+            labelGEOTetInfo.AutoSize = true;
+            labelGEOTetInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            labelGEOTetInfo.Location = new Point(17, 286);
+            labelGEOTetInfo.Name = "labelGEOTetInfo";
+            labelGEOTetInfo.Size = new Size(13, 17);
+            labelGEOTetInfo.TabIndex = 16;
+            labelGEOTetInfo.Text = "-";
+            // 
+            // progressBarGEOT
+            // 
+            progressBarGEOT.Location = new Point(68, 324);
+            progressBarGEOT.Name = "progressBarGEOT";
+            progressBarGEOT.Size = new Size(291, 23);
+            progressBarGEOT.TabIndex = 15;
+            // 
+            // progressBarSzukanieTetGEO
+            // 
+            progressBarSzukanieTetGEO.Location = new Point(68, 233);
+            progressBarSzukanieTetGEO.Name = "progressBarSzukanieTetGEO";
+            progressBarSzukanieTetGEO.Size = new Size(291, 23);
+            progressBarSzukanieTetGEO.TabIndex = 14;
+            // 
+            // buttonStartTestGEO
+            // 
+            buttonStartTestGEO.Font = new Font("ROG Fonts", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonStartTestGEO.Location = new Point(68, 121);
+            buttonStartTestGEO.Name = "buttonStartTestGEO";
+            buttonStartTestGEO.Size = new Size(291, 81);
+            buttonStartTestGEO.TabIndex = 13;
+            buttonStartTestGEO.Text = "Start Test";
+            buttonStartTestGEO.UseVisualStyleBackColor = true;
+            buttonStartTestGEO.Click += buttonStartTestGEO_Click;
             // 
             // labelBestGEO
             // 
@@ -527,24 +566,6 @@
             label9.TabIndex = 0;
             label9.Text = "a =";
             // 
-            // buttonStartTestGEO
-            // 
-            buttonStartTestGEO.Font = new Font("ROG Fonts", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonStartTestGEO.Location = new Point(68, 121);
-            buttonStartTestGEO.Name = "buttonStartTestGEO";
-            buttonStartTestGEO.Size = new Size(291, 81);
-            buttonStartTestGEO.TabIndex = 13;
-            buttonStartTestGEO.Text = "Start Test";
-            buttonStartTestGEO.UseVisualStyleBackColor = true;
-            buttonStartTestGEO.Click += buttonStartTestGEO_Click;
-            // 
-            // progressBarSzukanieTetGEO
-            // 
-            progressBarSzukanieTetGEO.Location = new Point(68, 233);
-            progressBarSzukanieTetGEO.Name = "progressBarSzukanieTetGEO";
-            progressBarSzukanieTetGEO.Size = new Size(291, 23);
-            progressBarSzukanieTetGEO.TabIndex = 14;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -619,5 +640,7 @@
         private Label labelBestGEO;
         private Button buttonStartTestGEO;
         private ProgressBar progressBarSzukanieTetGEO;
+        private ProgressBar progressBarGEOT;
+        private Label labelGEOTetInfo;
     }
 }
