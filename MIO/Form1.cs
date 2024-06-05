@@ -267,7 +267,8 @@ namespace MIO
 
         private void buttonStartTestGEO_Click(object sender, EventArgs e)
         {
-            
+            progressBarGEOT.Value = 0;
+            progressBarSzukanieTetGEO.Value = 0;
             int a = -4;
             int b = 12;
             var iterator = 100;
@@ -356,6 +357,87 @@ namespace MIO
                 
             }
             labelGEOTetInfo.Text = "Tet " + bestTet.Item1 + " jest najlepszy. Osi¹gn¹³ œreni¹ " + bestTet.Item2;
+            var bestT = (0, 0.0);
+            progressBarGEOT.Maximum = (40 * iterator) + 1;
+            for (T = 1000; T < 5000; T+=100)
+            {
+                List<double> wyniki = new List<double>();
+                for (int q = 0; q < iterator; q++)
+                {
+                    var historiaZmianOsobnika = new List<(OsobnikGEO, OsobnikGEO)>();
+                    OsobnikGEO pierwszy = Przybornik.GenerujGEO(a, b, precyzja, L);
+                    // lista krotek pozwala przechowywaæ najlepszego osobnika oraz obecnego
+                    historiaZmianOsobnika.Add((pierwszy, pierwszy));
+                    // Pêtla mutacji
+                    Random rnd = new Random();
+                    for (int i = 1; i < T; i++)
+                    {
+                        // pierwszy int pozycja zmutowanego genu oraz osobnik z mutacj¹
+                        var tymczasoweOsobniki = new List<(int, OsobnikGEO)>();
+                        // Pêtla tworz¹ca tymczasow¹ populacjê
+                        for (int j = 0; j < historiaZmianOsobnika.Last().Item2.XBin.Length; j++)
+                        {
+                            // zawsze brany jest najnowszy osobnik
+                            var bity = historiaZmianOsobnika.Last().Item2.XBin.ToCharArray();
+                            if (bity[j] == '1')
+                            {
+                                bity[j] = '0';
+                            }
+                            else
+                            {
+                                bity[j] = '1';
+                            }
+                            tymczasoweOsobniki.Add((j, new OsobnikGEO(new string(bity), a, b, L, precyzja)));
+                        }
+                        // ranking
+                        tymczasoweOsobniki = tymczasoweOsobniki.OrderByDescending(o => o.Item2.Fx).ToList();
+                        var bityDoMutacji = historiaZmianOsobnika.Last().Item2.XBin.ToCharArray();
+                        // przygotowywanie genomu kolejnego osobnika
+                        for (int j = 0; j < tymczasoweOsobniki.Count; j++)
+                        {
+                            if (rnd.NextDouble() < (1 / Math.Pow(j + 1, bestTet.Item1)))
+                            {
+                                if (bityDoMutacji[j] == '1')
+                                {
+                                    bityDoMutacji[j] = '0';
+                                }
+                                else
+                                {
+                                    bityDoMutacji[j] = '1';
+                                }
+                            }
+                        }
+                        OsobnikGEO nowy = new OsobnikGEO(new string(bityDoMutacji), a, b, L, precyzja);
+                        // sprawdzanie czy nowy jest lepszy ni¿ poprzedni najlepszy
+                        if (historiaZmianOsobnika.Last().Item1.Fx < nowy.Fx)
+                        {
+                            historiaZmianOsobnika.Add((nowy, nowy));
+                        }
+                        else
+                        {
+                            historiaZmianOsobnika.Add((historiaZmianOsobnika.Last().Item1, nowy));
+                        }
+
+
+
+                    }
+                    progressBarGEOT.Value += 1;
+                    wyniki.Add(historiaZmianOsobnika.Last().Item1.Fx);
+                    historiaZmianOsobnika.Clear();
+
+                }
+                var srednia = wyniki.Average();
+                if (bestT.Item2 < wyniki.Average())
+                {
+                    bestT = (T, wyniki.Average());
+                }
+                wyniki.Clear();
+
+
+
+            }
+            labelBestTGEO.Text = "Najlepsze wyniki osi¹gniêto po " + bestT.Item1 + " Œrednia wynios³a " + bestT.Item2;
+            //MessageBox.Show("Najlepsze wyniki osi¹gniêto po "+bestT.Item1+" Œrednia wynios³a "+bestT.Item2);
         }
     }
 }
