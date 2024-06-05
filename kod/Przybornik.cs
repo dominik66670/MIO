@@ -9,6 +9,12 @@ namespace kod
 {
     public static class Przybornik
     {
+        // zwraca losowego osobnika GEO
+        public static OsobnikGEO GenerujGEO(int a, int b, int precyzja, double L)
+        {
+            Random random = new Random();
+            return new OsobnikGEO(Math.Round((a + (random.NextDouble() * (b - a))), precyzja),L,a,b);
+        }
         // zwraca średnie przystosowanie populacji po T pokoleniech
         public static double Testy(int N, double Pk, double Pm, int T)
         {
@@ -282,17 +288,30 @@ namespace kod
         {
             return x - Math.Floor(x);
         }
-        private static int xBinToXInt(string XBin)
+        public static int xBinToXInt(string XBin)
         {
             return Convert.ToInt32(XBin, 2);
         }
-        private static double xIntToXReal(int XInt,int a, int b, double l, int precision)
+        public static double xIntToXReal(int XInt,int a, int b, double l, int precision)
         {
             return Math.Round((((b - a) * XInt) / (Math.Pow(2, l) - 1)) + a, precision);
         }
-        private static double obliczFX(double XReal)
+        public static double obliczFX(double XReal)
         {
             return mantysa(XReal) * ((Math.Cos(20 * Math.PI * XReal) - Math.Sin(XReal)));
+        }
+        public static string xIntToXBin(double l,int XInt)
+        {
+            string xbin = Convert.ToString((long)XInt, 2);
+            while (xbin.Length < l)
+            {
+                xbin = "0" + xbin;
+            }
+            return xbin;
+        }
+        public static int xRealToXInt(int a, int b, double l,double XReal)
+        {
+            return (int)Math.Round(1.0 / (b - a) * (XReal - a) * (Math.Pow(2, l) - 1));
         }
     }
 }
