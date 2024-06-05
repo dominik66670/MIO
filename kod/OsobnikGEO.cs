@@ -26,7 +26,7 @@ namespace kod
         }
         public override string ToString()
         {
-            return XReal+" "+XBin+" "+Fx;
+            return "XReal = "+XReal+" XBin = "+XBin+" F(x) = "+Fx;
         }
     }
 }

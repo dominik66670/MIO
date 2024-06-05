@@ -64,6 +64,8 @@
             wielkiWynikBindingSource = new BindingSource(components);
             buttonWielkieTesty = new Button();
             tabPage3 = new TabPage();
+            labelBestGEO = new Label();
+            formsPlotGEO = new ScottPlot.WinForms.FormsPlot();
             buttonStartGEO = new Button();
             textBoxTetGEO = new TextBox();
             textBoxTGEO = new TextBox();
@@ -75,7 +77,8 @@
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
-            formsPlotGEO = new ScottPlot.WinForms.FormsPlot();
+            buttonStartTestGEO = new Button();
+            progressBarSzukanieTetGEO = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             Algorytm.SuspendLayout();
@@ -390,6 +393,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(progressBarSzukanieTetGEO);
+            tabPage3.Controls.Add(buttonStartTestGEO);
+            tabPage3.Controls.Add(labelBestGEO);
             tabPage3.Controls.Add(formsPlotGEO);
             tabPage3.Controls.Add(buttonStartGEO);
             tabPage3.Controls.Add(textBoxTetGEO);
@@ -409,6 +415,22 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "GEO";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // labelBestGEO
+            // 
+            labelBestGEO.AutoSize = true;
+            labelBestGEO.Location = new Point(6, 52);
+            labelBestGEO.Name = "labelBestGEO";
+            labelBestGEO.Size = new Size(0, 15);
+            labelBestGEO.TabIndex = 12;
+            // 
+            // formsPlotGEO
+            // 
+            formsPlotGEO.DisplayScale = 1F;
+            formsPlotGEO.Location = new Point(494, 6);
+            formsPlotGEO.Name = "formsPlotGEO";
+            formsPlotGEO.Size = new Size(1010, 471);
+            formsPlotGEO.TabIndex = 11;
             // 
             // buttonStartGEO
             // 
@@ -505,13 +527,23 @@
             label9.TabIndex = 0;
             label9.Text = "a =";
             // 
-            // formsPlotGEO
+            // buttonStartTestGEO
             // 
-            formsPlotGEO.DisplayScale = 1F;
-            formsPlotGEO.Location = new Point(494, 6);
-            formsPlotGEO.Name = "formsPlotGEO";
-            formsPlotGEO.Size = new Size(1010, 471);
-            formsPlotGEO.TabIndex = 11;
+            buttonStartTestGEO.Font = new Font("ROG Fonts", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonStartTestGEO.Location = new Point(68, 121);
+            buttonStartTestGEO.Name = "buttonStartTestGEO";
+            buttonStartTestGEO.Size = new Size(291, 81);
+            buttonStartTestGEO.TabIndex = 13;
+            buttonStartTestGEO.Text = "Start Test";
+            buttonStartTestGEO.UseVisualStyleBackColor = true;
+            buttonStartTestGEO.Click += buttonStartTestGEO_Click;
+            // 
+            // progressBarSzukanieTetGEO
+            // 
+            progressBarSzukanieTetGEO.Location = new Point(68, 233);
+            progressBarSzukanieTetGEO.Name = "progressBarSzukanieTetGEO";
+            progressBarSzukanieTetGEO.Size = new Size(291, 23);
+            progressBarSzukanieTetGEO.TabIndex = 14;
             // 
             // Form1
             // 
@@ -584,5 +616,8 @@
         private TextBox textBoxBGEO;
         private Button buttonStartGEO;
         private ScottPlot.WinForms.FormsPlot formsPlotGEO;
+        private Label labelBestGEO;
+        private Button buttonStartTestGEO;
+        private ProgressBar progressBarSzukanieTetGEO;
     }
 }
