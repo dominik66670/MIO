@@ -277,6 +277,7 @@ namespace MIO
             int precyzja = 3;
             var L = Przybornik.ObliczL(a, b, precyzja);
             var bestTet = (0.0, -3d);
+            var Tety = new List<(double,double)>();
             progressBarSzukanieTetGEO.Maximum = (25 * iterator)+1;
             progressBarSzukanieTetGEO.Value = 0;
             for (int Tet = 5; Tet < 30; Tet++) 
@@ -342,11 +343,13 @@ namespace MIO
                         
                     }
                     progressBarSzukanieTetGEO.Value += 1;
+                    // zapisywanie historii iteracji Tet
                     wyniki.Add(historiaZmianOsobnika.Last().Item1.Fx);
                     historiaZmianOsobnika.Clear();
                     
                 }
-                var srednia = wyniki.Average();
+                Tety.Add((Tet * 0.1, wyniki.Average()));
+                // sprawdzanie czy jest nowy najlepszy tet
                 if (bestTet.Item2 < wyniki.Average())
                 {
                     bestTet = (Tet * 0.1, wyniki.Average());
@@ -356,8 +359,20 @@ namespace MIO
                 
                 
             }
+            // sortowanie przed zapisem
+            Tety = Tety.OrderByDescending(t => t.Item2).ToList();
+            // zapis histori szukanie Tet do pliku
+            new XElement("Wyniki",
+                Tety.Select(w =>
+                    new XElement("Wynik_dla_T_5000",
+                    new XElement("Tet", w.Item1),
+                    new XElement("FxAvg", w.Item2)
+                    ))
+                ).Save("WynikiGEOTet.xml");
             labelGEOTetInfo.Text = "Tet " + bestTet.Item1 + " jest najlepszy. Osi¹gn¹³ œreni¹ " + bestTet.Item2;
             var bestT = (0, 0.0);
+            // lista do przehowywanie historii T
+            var HistoriaT = new List<(int, double)>();
             progressBarGEOT.Maximum = (40 * iterator) + 1;
             for (T = 1000; T < 5000; T+=100)
             {
@@ -422,11 +437,15 @@ namespace MIO
 
                     }
                     progressBarGEOT.Value += 1;
+                    // zapisywanie historii z iteracji
                     wyniki.Add(historiaZmianOsobnika.Last().Item1.Fx);
                     historiaZmianOsobnika.Clear();
 
                 }
+                // zapisywanie historii testów
+                HistoriaT.Add((T, wyniki.Average()));
                 var srednia = wyniki.Average();
+                // sprawdzanie najlepszego elementu
                 if (bestT.Item2 < wyniki.Average())
                 {
                     bestT = (T, wyniki.Average());
@@ -436,6 +455,16 @@ namespace MIO
 
 
             }
+            // sortowanie historii szukania optymalnego T
+            HistoriaT = HistoriaT.OrderByDescending(t => t.Item2).ToList();
+            // zapis historii szukania optymalnego T
+            new XElement("Wyniki",
+                HistoriaT.Select(w =>
+                    new XElement("Wynik_dla_Tet_"+bestTet.Item1,
+                    new XElement("T", w.Item1),
+                    new XElement("FxAvg", w.Item2)
+                    ))
+                ).Save("WynikiGEOIteracje.xml");
             labelBestTGEO.Text = "Najlepsze wyniki osi¹gniêto po " + bestT.Item1 + " Œrednia wynios³a " + bestT.Item2;
             //MessageBox.Show("Najlepsze wyniki osi¹gniêto po "+bestT.Item1+" Œrednia wynios³a "+bestT.Item2);
         }
