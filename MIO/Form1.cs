@@ -253,6 +253,8 @@ namespace MIO
                 var fxMax = formsPlotGEO.Plot.Add.Scatter(Enumerable.Range(0, T).ToArray(), historiaZmianOsobnika.Select(o => o.Item1.Fx).ToArray());
                 //var fxMax = formsPlotGEO.Plot.Add.Signal(historiaZmianOsobnika.Select(o => o.Item1.Fx).ToArray());
                 fxMax.LegendText = "F(x) najlepszego osobnika";
+                formsPlotGEO.Plot.XLabel("Iteracje");
+                formsPlotGEO.Plot.YLabel("F(x)");
                 formsPlotGEO.Plot.ShowLegend();
                 formsPlotGEO.Plot.ShowGrid();
                 formsPlotGEO.Refresh();
@@ -460,7 +462,8 @@ namespace MIO
             // zapis historii szukania optymalnego T
             new XElement("Wyniki",
                 HistoriaT.Select(w =>
-                    new XElement("Wynik_dla_Tet_"+bestTet.Item1,
+                    new XElement("Wynik",
+                    new XElement("Tet", bestTet.Item1),
                     new XElement("T", w.Item1),
                     new XElement("FxAvg", w.Item2)
                     ))
