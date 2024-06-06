@@ -256,8 +256,8 @@ namespace MIO
                 formsPlotGEO.Plot.ShowLegend();
                 formsPlotGEO.Plot.ShowGrid();
                 formsPlotGEO.Refresh();
-                labelBestGEO.Text = "Najlepszy osobnik " + historiaZmianOsobnika.Last().Item1.ToString();
-
+                //labelBestGEO.Text = "Najlepszy osobnik " + historiaZmianOsobnika.Last().Item1.ToString();
+                richTextWynikGEO.Text = "Najlepszy osobnik " + historiaZmianOsobnika.Last().Item1.ToString();
             }
             catch (Exception ex)
             {

@@ -64,6 +64,8 @@
             wielkiWynikBindingSource = new BindingSource(components);
             buttonWielkieTesty = new Button();
             tabPage3 = new TabPage();
+            richTextWynikGEO = new RichTextBox();
+            labelBestTGEO = new Label();
             labelGEOTetInfo = new Label();
             progressBarGEOT = new ProgressBar();
             progressBarSzukanieTetGEO = new ProgressBar();
@@ -81,7 +83,6 @@
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
-            labelBestTGEO = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osobnikBindingSource).BeginInit();
             Algorytm.SuspendLayout();
@@ -396,6 +397,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(richTextWynikGEO);
             tabPage3.Controls.Add(labelBestTGEO);
             tabPage3.Controls.Add(labelGEOTetInfo);
             tabPage3.Controls.Add(progressBarGEOT);
@@ -421,6 +423,24 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "GEO";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // richTextWynikGEO
+            // 
+            richTextWynikGEO.Location = new Point(6, 61);
+            richTextWynikGEO.Name = "richTextWynikGEO";
+            richTextWynikGEO.ReadOnly = true;
+            richTextWynikGEO.Size = new Size(422, 54);
+            richTextWynikGEO.TabIndex = 18;
+            richTextWynikGEO.Text = "";
+            // 
+            // labelBestTGEO
+            // 
+            labelBestTGEO.AutoSize = true;
+            labelBestTGEO.Location = new Point(17, 385);
+            labelBestTGEO.Name = "labelBestTGEO";
+            labelBestTGEO.Size = new Size(12, 15);
+            labelBestTGEO.TabIndex = 17;
+            labelBestTGEO.Text = "-";
             // 
             // labelGEOTetInfo
             // 
@@ -568,15 +588,6 @@
             label9.TabIndex = 0;
             label9.Text = "a =";
             // 
-            // labelBestTGEO
-            // 
-            labelBestTGEO.AutoSize = true;
-            labelBestTGEO.Location = new Point(17, 385);
-            labelBestTGEO.Name = "labelBestTGEO";
-            labelBestTGEO.Size = new Size(12, 15);
-            labelBestTGEO.TabIndex = 17;
-            labelBestTGEO.Text = "-";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -654,5 +665,6 @@
         private ProgressBar progressBarGEOT;
         private Label labelGEOTetInfo;
         private Label labelBestTGEO;
+        private RichTextBox richTextWynikGEO;
     }
 }
